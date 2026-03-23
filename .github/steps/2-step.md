@@ -1,62 +1,60 @@
-## Step 2: Create a Custom Agent
+## Step 2: Create Mona's website updater workflow
 
-Great work opening that pull request! 🎉 Now let's create your very own AI agent.
+Nice work getting the repository ready. Now it's time to build the first agentic workflow for Mona's website.
 
-### 📖 Theory: How Agent Files Work
+### 📖 Theory: Agentic Workflows as Repository Teammates
 
-Agent files are **markdown documents** that define how an AI assistant should behave in your repository. They follow a specific structure:
+An agentic workflow can read repository context, compare sources, draft changes, and open a pull request for human review. That makes it a great fit for Mona's website, where updates should be prepared automatically but still reviewed before they are published.
 
-- **YAML frontmatter** — Contains metadata like the agent's `description` and available `tools`.
-- **Markdown body** — Provides instructions, context, and guidelines for the agent's behavior.
-- **File naming** — Agent files follow the convention `<name>.agent.md` and live in `.github/agents/`.
+In this step, you'll create a workflow definition in `.github/workflows/` and pair it with a real content update in the website source. Your workflow should tell the agent to read Mona's notes, check the GitHub Blog and the GitHub Changelog, and then prepare a pull request for Mona to review.
 
-When you invoke an agent in GitHub Copilot Chat, it reads these instructions to understand its role, capabilities, and how to respond. This means your team can customize AI behavior through simple markdown — no code required!
+### ⌨️ Activities
 
-> [!TIP]
-> Keep agent instructions clear and specific. The more focused an agent's role, the better its responses will be.
+1. Create a new branch from `main` for Mona's content workflow.
 
-### ⌨️ Activity: Create Your First Agent
+2. Update `site/content/github-info.md` with a fresh website change. For example, add a new section like `## Latest GitHub Updates` and include at least one short update for readers.
 
-1. In your pull request branch (`add-custom-agent`), navigate to the `.github/agents/` directory.
+3. Create `.github/workflows/update-github-info.md` for your agentic workflow.
 
-1. Create a new file named `hello-world.agent.md`.
+4. In that workflow file, make sure you clearly instruct the agent to:
 
-1. Add the following content to the file:
+   - read `notes/mona-notes.md`
+   - use the GitHub Blog
+   - use the GitHub Changelog
+   - update `site/content/github-info.md`
+   - create a pull request for Mona to review
 
-    ```markdown
-    ---
-    description: A friendly greeting agent that helps with introductions and welcomes
-    ---
+5. If you'd like a starting point, use something like this and customize it:
 
-    # Hello World Agent
+   ```markdown
+   ---
+   name: update-github-info
+   description: Draft website updates for Mona's GitHub Info site.
+   on:
+     workflow_dispatch:
+   ---
 
-    You are a friendly greeting agent for this repository.
+   # Update Mona's GitHub Info website
 
-    ## What You Do
+   Review `site/content/github-info.md`.
 
-    - Greet new contributors and help them get started
-    - Provide helpful introductions to the repository
-    - Answer basic questions about the project
+   Use these sources:
+   - `notes/mona-notes.md`
+   - GitHub Blog
+   - GitHub Changelog
 
-    ## Instructions
+   Update the website with concise changes and open a pull request for Mona to review.
+   ```
 
-    When a user interacts with you:
+6. Commit your changes to the pull request branch.
 
-    1. Welcome them warmly
-    2. Ask how you can help
-    3. Provide clear and friendly responses
-    ```
-
-1. Commit the new file to your `add-custom-agent` branch.
-
-1. Wait about 20 seconds then refresh the exercise issue page for the next step!
+7. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- Make sure the file is created in the `.github/agents/` directory, not the repository root.
-- The file name must be `hello-world.agent.md` — the grading check looks for this specific file.
-- Ensure you commit to the `add-custom-agent` branch (your PR branch), not directly to `main`.
-- If the next step doesn't appear, check the [Actions](../../actions) tab to see if the workflow ran.
+- The grading check looks for both a website content update and a new workflow file.
+- Include the phrases `GitHub Blog`, `GitHub Changelog`, and `pull request` in `.github/workflows/update-github-info.md`.
+- Keep your workflow in markdown (`.md`) so the exercise focuses on the agent instructions.
 
 </details>

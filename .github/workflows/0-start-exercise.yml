@@ -22,7 +22,7 @@ jobs:
     uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.0
     with:
       exercise-title: "Getting Started with Agentic Workflows"
-      intro-message: "Learn how to create and use AI agents in your GitHub repository with Agentic Workflows"
+      intro-message: "Practice installing and creating agentic workflows for Mona's GitHub Info website"
 
   post_next_step_content:
     name: Post next step content
@@ -65,5 +65,11 @@ jobs:
       - name: Enable next step workflow
         run: |
           gh workflow enable "Step 1"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Disable start workflow
+        run: |
+          gh workflow disable "${{github.workflow}}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

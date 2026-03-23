@@ -1,37 +1,53 @@
-## Step 1: Explore Your Agentic Workflow Setup
+## Step 1: Install agentic workflows and merge the setup
 
-Welcome to **Getting Started with Agentic Workflows**! 🚀 In this exercise, you'll learn how GitHub Agentic Workflows empower AI agents to perform complex tasks right in your repository.
+Mona's website needs repository-level setup before an agentic workflow can help. In this step, you'll add the GitHub Agentic Workflows setup workflow and merge it to `main`.
 
-### 📖 Theory: What Are Agentic Workflows?
+### 📖 Theory: Setting Up a Repository for Agentic Workflows
 
-GitHub Agentic Workflows let you define AI agent behaviors directly in your repository using markdown files. These agents work with GitHub Copilot to:
+GitHub Agentic Workflows use repository files and GitHub Actions to give AI agents a safe, repeatable place to work. A setup workflow can install the `gh aw` tooling for GitHub Actions so future workflows can create or maintain automation in this repository.
 
-- **Execute multi-step tasks** — Agents can perform complex operations that go beyond simple code suggestions.
-- **Use specialized tools** — Through MCP (Model Context Protocol) servers, agents can interact with external services and APIs.
-- **Follow repository-specific instructions** — Agent definitions live in `.github/agents/` as markdown files, keeping your AI configuration version-controlled alongside your code.
+The [`gh aw` CLI](https://github.github.com/gh-aw/setup/cli/) and setup action are commonly used to prepare a repository for agentic workflows. In this exercise, you'll add the repository setup as code, review it in a pull request, and then merge it to `main`.
 
-Your repository has already been initialized with a **dispatcher agent** at `.github/agents/agentic-workflows.agent.md`. This agent routes requests to specialized prompts for creating, debugging, and upgrading workflows.
+### ⌨️ Activities
 
-> [!NOTE]
-> The dispatcher agent is the main entry point for agentic workflows. It understands your intent and delegates to the right specialized prompt.
+1. Create a new branch from `main`.
 
-### ⌨️ Activity: Open a Pull Request
+2. Add `.github/workflows/copilot-setup-steps.yml` with a workflow that checks out the repository and installs the `gh-aw` CLI by using `github/gh-aw/actions/setup-cli`.
 
-1. Navigate to the **Code** tab of your repository.
+3. You can use this starter example:
 
-1. Click the branch dropdown and create a new branch named `add-custom-agent`.
+   ```yaml
+   name: "Copilot Setup Steps"
 
-1. You can make a small change (like adding a blank line to `README.md`) to enable creating a pull request.
+   on:
+     workflow_dispatch:
+     push:
+       paths:
+         - .github/workflows/copilot-setup-steps.yml
 
-1. Open a pull request from your `add-custom-agent` branch to `main`.
+   jobs:
+     copilot-setup-steps:
+       runs-on: ubuntu-latest
+       permissions:
+         contents: read
+       steps:
+         - name: Checkout repository
+           uses: actions/checkout@v6
+         - name: Install gh-aw extension
+           uses: github/gh-aw/actions/setup-cli@main
+   ```
 
-1. Wait about 20 seconds then refresh the exercise issue page for the next step!
+4. Open a pull request for your branch.
+
+5. Merge the pull request into `main`.
+
+6. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- Make sure your branch is named `add-custom-agent` for consistency, though any branch name will work.
-- If the next step doesn't appear, check the [Actions](../../actions) tab to see if the workflow is running.
-- You can also manually trigger the Step 1 workflow from the Actions tab using the "Run workflow" button.
+- Make sure the file path is exactly `.github/workflows/copilot-setup-steps.yml`.
+- The check looks for the `copilot-setup-steps` job and the `github/gh-aw/actions/setup-cli` action.
+- Step 1 only completes after your setup pull request is merged into `main`.
 
 </details>

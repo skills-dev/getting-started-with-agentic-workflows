@@ -1,18 +1,19 @@
 ## Review
 
-_Congratulations, you've completed this exercise and learned the fundamentals of GitHub Agentic Workflows!_ 🎉
+_Congratulations, you've completed this exercise and built your first hands-on GitHub Agentic Workflows practice scenario!_ 🎉
 
 <img src="https://octodex.github.com/images/jetpacktocat.png" alt="celebrate" width=200 align=right>
 
-Here's a recap of your accomplishments:
+Here's what you accomplished:
 
-- **Explored agentic workflow setup** — You learned how the dispatcher agent and repository configuration work together.
-- **Created a custom agent** — You built a `hello-world` agent with YAML frontmatter and markdown instructions.
-- **Activated your agent** — You merged your changes to make the agent available in your repository.
+- **Installed agentic workflow setup** — You added the repository workflow that prepares GitHub Agentic Workflows tooling.
+- **Created a website updater** — You drafted a workflow for Mona's GitHub Info website that uses repository notes plus the GitHub Blog and GitHub Changelog.
+- **Added a human review loop** — You designed the workflow to propose changes in a pull request for Mona.
+- **Operationalized the workflow** — You added manual and scheduled execution and documented how the automation works.
 
 ### What's next?
 
-- **Create agentic workflows**: Use the `gh aw` CLI to create AI-powered workflows that automate tasks like issue triage and PR review. Try `gh aw new <workflow-name>` to get started.
-- **Learn more about agent definitions**: Visit the [GitHub Agentic Workflows documentation](https://github.github.com/gh-aw/) for advanced agent configuration.
-- **Explore MCP servers**: Connect your agents to external tools and services using the [Model Context Protocol](https://modelcontextprotocol.io/).
-- **Try more exercises**: Check out other [GitHub Skills exercises](https://github.com/skills) to continue learning.
+- **Try `gh aw init` and `gh aw add-wizard`** to explore more workflow setup patterns.
+- **Create another content workflow** for release notes, issue triage, or changelog summaries.
+- **Refine Mona's prompt** with stronger guardrails, output formatting, or review instructions.
+- **Explore more docs** at the [GitHub Agentic Workflows site](https://github.github.com/gh-aw/).

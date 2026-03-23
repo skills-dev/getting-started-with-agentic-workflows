@@ -3,7 +3,7 @@ name: Step 2
 on:
   workflow_dispatch:
   pull_request:
-    types: [synchronize]
+    types: [opened, reopened, synchronize]
     branches:
       - main
 
@@ -56,22 +56,41 @@ jobs:
           file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
           edit-mode: replace
 
-      # START: Check practical exercise
-
-      - name: Check if agent file exists
-        id: check-file-exists
+      - name: Check website content file exists
+        id: check-site-file
         continue-on-error: true
         uses: skills/exercise-toolkit/actions/file-exists@v0.9.0
         with:
-          file: .github/agents/hello-world.agent.md
+          file: site/content/github-info.md
 
-      - name: Check for keyphrase in agent file
-        id: check-for-keyphrase
+      - name: Check website includes latest updates section
+        id: check-site-content
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v1
         with:
-          text-file: .github/agents/hello-world.agent.md
-          keyphrase: Hello World Agent
+          text-file: site/content/github-info.md
+          keyphrase: Latest GitHub Updates
+
+      - name: Check workflow file exists
+        id: check-workflow-file
+        continue-on-error: true
+        uses: skills/exercise-toolkit/actions/file-exists@v0.9.0
+        with:
+          file: .github/workflows/update-github-info.md
+
+      - name: Check workflow uses all three sources
+        id: check-workflow-sources
+        continue-on-error: true
+        run: |
+          grep -q 'notes/mona-notes.md' .github/workflows/update-github-info.md
+          grep -q 'GitHub Blog' .github/workflows/update-github-info.md
+          grep -q 'GitHub Changelog' .github/workflows/update-github-info.md
+
+      - name: Check workflow creates a pull request for Mona
+        id: check-workflow-review
+        continue-on-error: true
+        run: |
+          grep -Eiq 'pull request.*Mona|Mona.*pull request|review.*Mona' .github/workflows/update-github-info.md
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -84,12 +103,16 @@ jobs:
           vars: |
             step_number: 2
             results_table:
-              - description: "Checked if hello-world.agent.md file exists"
-                passed: ${{ steps.check-file-exists.outcome == 'success' }}
-              - description: "Checked for 'Hello World Agent' in hello-world.agent.md"
-                passed: ${{ steps.check-for-keyphrase.outcome == 'success' }}
-
-      # END: Check practical exercise
+              - description: "Checked for the website content file"
+                passed: ${{ steps.check-site-file.outcome == 'success' }}
+              - description: "Checked for a Latest GitHub Updates section"
+                passed: ${{ steps.check-site-content.outcome == 'success' }}
+              - description: "Checked for .github/workflows/update-github-info.md"
+                passed: ${{ steps.check-workflow-file.outcome == 'success' }}
+              - description: "Checked that the workflow uses Mona's notes, the GitHub Blog, and the GitHub Changelog"
+                passed: ${{ steps.check-workflow-sources.outcome == 'success' }}
+              - description: "Checked that the workflow creates a pull request for Mona"
+                passed: ${{ steps.check-workflow-review.outcome == 'success' }}
 
       - name: Fail job if not all checks passed
         if: contains(steps.*.outcome, 'failure')
