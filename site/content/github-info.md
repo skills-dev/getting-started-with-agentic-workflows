@@ -1,21 +1,16 @@
 # GitHub Info
 
-Welcome to Mona's GitHub Info website.
+## Mona's editorial angle
 
-## About this site
+Mona's website focuses on practical GitHub guidance backed by official references from:
 
-This Astro-powered site collects short, useful updates about GitHub for readers who want the highlights without reading every announcement in full.
+- docs.github.com
+- github.blog
+- github.blog/changelog
 
-## Current Highlights
+## Current homepage themes
 
-- Add a short GitHub update here.
-- Explain why it matters to Mona's readers.
-- Include the source when possible.
-
-## Source Checklist
-
-Mona uses these sources when preparing updates:
-
-- Notes stored in `notes/mona-notes.md`
-- GitHub Blog
-- GitHub Changelog
+- GitHub collaboration basics: repositories, branches, pull requests, and merges.
+- GitHub Copilot as an AI coding assistant across the IDE, CLI, and GitHub.
+- GitHub Actions as the automation layer behind repository workflows.
+- Recent GitHub Blog and Changelog stories worth watching.

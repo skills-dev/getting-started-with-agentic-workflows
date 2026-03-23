@@ -35,3 +35,13 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Astro / Node build artifacts #
+###############################
+site/node_modules/
+site/dist/
+site/.astro/
+site/.vercel/
+site/.netlify/
+site/.env
+site/.env.*

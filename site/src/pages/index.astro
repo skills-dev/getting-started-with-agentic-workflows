@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import mona from '../../assets/mona.png';
+import copilot from '../../assets/copilot.png';
+import ducky from '../../assets/ducky.png';
+
+const latestRelease = {
+  eyebrow: 'Latest release highlight',
+  title: 'Secret scanning in AI coding agents via the GitHub MCP Server',
+  date: 'GitHub Changelog · March 17, 2026',
+  summary:
+    'GitHub now supports secret scanning in AI coding agents through the GitHub MCP Server, helping teams catch exposed credentials and sensitive data earlier in automated coding flows.',
+  href: 'https://github.blog/changelog/2026-03-17-secret-scanning-in-ai-coding-agents-via-the-github-mcp-server/',
+};
+
+const recentUpdates = [
+  {
+    type: 'GitHub Changelog',
+    date: 'March 20, 2026',
+    title: 'Copilot usage metrics now resolve auto model selection to actual models',
+    summary:
+      'Organizations now get clearer visibility into which underlying models were actually used when Copilot auto model selection is enabled.',
+    href: 'https://github.blog/changelog/2026-03-20-copilot-usage-metrics-now-resolve-auto-model-selection-to-actual-models/',
+  },
+  {
+    type: 'GitHub Changelog',
+    date: 'March 19, 2026',
+    title: 'View code and comments side-by-side in pull request Files changed page',
+    summary:
+      'GitHub improved pull request review by letting developers see code and review comments together in one view.',
+    href: 'https://github.blog/changelog/2026-03-19-view-code-and-comments-side-by-side-in-pull-request-files-changed-page/',
+  },
+  {
+    type: 'GitHub Blog',
+    date: 'March 19, 2026',
+    title: 'How Squad runs coordinated AI agents inside your repository',
+    summary:
+      'This deep dive explains how repository-native multi-agent workflows can stay inspectable, predictable, and collaborative.',
+    href: 'https://github.blog/2026-03-19-how-squad-runs-coordinated-ai-agents-inside-your-repository/',
+  },
+  {
+    type: 'GitHub Blog',
+    date: 'March 19, 2026',
+    title: 'Rethinking open source mentorship in the AI era',
+    summary:
+      'GitHub explores a practical framework for scaling mentorship as AI-driven contributions increase across open source projects.',
+    href: 'https://github.blog/2026-03-19-rethinking-open-source-mentorship-in-the-ai-era/',
+  },
+];
+
+const sourceGroups = [
+  {
+    eyebrow: 'From docs.github.com',
+    title: 'The GitHub platform in one view',
+    description:
+      'GitHub documentation describes repositories, branches, pull requests, and merges as the core collaboration loop. Mona uses that same flow to keep website updates reviewable and safe.',
+    bullets: [
+      'Repositories store and share code so teams can collaborate in one place.',
+      'Branches let contributors make changes safely before they are ready to merge.',
+      'Pull requests give collaborators a place to review changes and suggest improvements.',
+    ],
+    link: 'https://docs.github.com/en/get-started/start-your-journey/about-github-and-git',
+    linkLabel: 'Read: About GitHub and Git',
+  },
+  {
+    eyebrow: 'From docs.github.com',
+    title: 'Copilot helps teams code, chat, and ship faster',
+    description:
+      'GitHub Copilot is documented as an AI coding assistant that works across the IDE, command line, mobile, and GitHub itself, making it a strong fit for Mona’s publishing workflow.',
+    bullets: [
+      'Suggests code and content as you work.',
+      'Supports chat, CLI help, and pull request assistance.',
+      'Can work on changes and create a pull request for review on eligible plans.',
+    ],
+    link: 'https://docs.github.com/en/copilot/about-github-copilot/what-is-github-copilot',
+    linkLabel: 'Read: What is GitHub Copilot?',
+  },
+  {
+    eyebrow: 'From docs.github.com',
+    title: 'Actions turns repository events into automation',
+    description:
+      'GitHub Actions documentation explains how workflows, jobs, steps, actions, and runners fit together. Mona’s publishing pipeline uses the same building blocks.',
+    bullets: [
+      'Workflows live in `.github/workflows` and can run on events, schedules, or manual dispatch.',
+      'Jobs can run sequentially or in parallel depending on dependencies.',
+      'Reusable actions reduce repeated setup work in automation.',
+    ],
+    link: 'https://docs.github.com/en/actions/get-started/understand-github-actions',
+    linkLabel: 'Read: Understand GitHub Actions',
+  },
+];
+
+const highlights = [
+  {
+    title: 'Newest signals first',
+    text: 'The homepage now leads with changelog and blog items so readers see fresh GitHub movement before deeper reference material.',
+  },
+  {
+    title: 'Trusted sources',
+    text: 'Every card points back to official GitHub references from docs, the blog, or the changelog.',
+  },
+  {
+    title: 'Review-first workflow',
+    text: 'Mona keeps automation inside a pull request flow so every update can be checked before it goes live.',
+  },
+];
+---
+
+<BaseLayout
+  title="Mona's GitHub Info"
+  description="Mona's Astro website for the latest GitHub releases, blog stories, changelog highlights, and docs-backed guidance."
+>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero__copy">
+        <span class="eyebrow">Mona's Astro website</span>
+        <h1>The newest GitHub updates, organized for busy developers.</h1>
+        <p class="lead">
+          Mona’s GitHub Info site now leads with what is freshest from the GitHub Blog and Changelog, then
+          gives readers the docs context they need lower on the page.
+        </p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="#latest-release">See latest release</a>
+          <a class="button button--ghost" href="#recent-updates">Browse fresh updates</a>
+        </div>
+
+        <div class="mini-stats">
+          <article>
+            <strong>1</strong>
+            <span>featured release headline</span>
+          </article>
+          <article>
+            <strong>4</strong>
+            <span>recent blog and changelog stories</span>
+          </article>
+          <article>
+            <strong>3</strong>
+            <span>docs references for deeper learning</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="orb orb--pink"></div>
+        <div class="orb orb--blue"></div>
+        <div class="hero-card hero-card--mona">
+          <img src={mona.src} alt="Mona character artwork" loading="eager" />
+          <div>
+            <p>Mona</p>
+            <span>Curates the signal from GitHub’s fastest-moving updates</span>
+          </div>
+        </div>
+        <div class="hero-card hero-card--copilot">
+          <img src={copilot.src} alt="GitHub Copilot artwork" />
+          <div>
+            <p>Copilot</p>
+            <span>Helps summarize and shape the newest information</span>
+          </div>
+        </div>
+        <div class="hero-card hero-card--ducky">
+          <img src={ducky.src} alt="Ducky character artwork" />
+          <div>
+            <p>Ducky</p>
+            <span>Keeps the homepage cheerful and approachable</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="release-spotlight" id="latest-release">
+      <div class="release-spotlight__copy">
+        <span class="eyebrow">{latestRelease.eyebrow}</span>
+        <h2>{latestRelease.title}</h2>
+        <p class="release-spotlight__meta">{latestRelease.date}</p>
+        <p>{latestRelease.summary}</p>
+        <a class="button button--primary" href={latestRelease.href} target="_blank" rel="noreferrer">
+          Open changelog item
+        </a>
+      </div>
+      <div class="release-spotlight__media">
+        <img src={copilot.src} alt="Copilot artwork next to the latest release headline" />
+      </div>
+    </section>
+
+    <section class="updates" id="recent-updates">
+      <div class="section-heading">
+        <span class="eyebrow">Newest information first</span>
+        <h2>Recent blog stories and changelog updates</h2>
+        <p>
+          Mona now surfaces the latest GitHub movement near the top so the homepage feels current the moment a
+          reader lands on it.
+        </p>
+      </div>
+
+      <div class="updates-grid">
+        {recentUpdates.map((update) => (
+          <article class="update-card">
+            <span class:list={["pill", update.type === 'GitHub Changelog' ? 'pill--gold' : 'pill--violet']}>
+              {update.type}
+            </span>
+            <p class="update-card__date">{update.date}</p>
+            <h3>{update.title}</h3>
+            <p>{update.summary}</p>
+            <a href={update.href} target="_blank" rel="noreferrer">Read official source</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="highlights">
+      {highlights.map((item) => (
+        <article class="highlight-card">
+          <h2>{item.title}</h2>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="feature-band">
+      <div class="feature-band__copy">
+        <span class="eyebrow">Why this homepage structure works</span>
+        <h2>Freshness at the top, reference depth lower down</h2>
+        <p>
+          The top of the page acts like a GitHub briefing: latest release headline first, then recent stories and
+          product updates. Lower sections help readers go deeper with official docs.
+        </p>
+        <ul class="checklist">
+          <li>Lead with the newest changelog and blog signals.</li>
+          <li>Give readers short summaries before they leave the page.</li>
+          <li>Keep docs available lower down for learning and follow-up.</li>
+        </ul>
+      </div>
+      <div class="feature-band__media">
+        <img src={mona.src} alt="Mona artwork for site structure explanation" />
+      </div>
+    </section>
+
+    <section class="story-grid" id="sources">
+      <div class="section-heading">
+        <span class="eyebrow">Reference shelf</span>
+        <h2>GitHub docs for deeper context</h2>
+        <p>
+          Once readers have scanned the newest updates, they can move into the documentation section for the core
+          GitHub concepts behind Mona’s summaries.
+        </p>
+      </div>
+
+      <div class="source-grid">
+        {sourceGroups.map((group) => (
+          <article class="source-card">
+            <span class="eyebrow">{group.eyebrow}</span>
+            <h3>{group.title}</h3>
+            <p>{group.description}</p>
+            <ul>
+              {group.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+            <a href={group.link} target="_blank" rel="noreferrer">{group.linkLabel}</a>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="closing-callout">
+      <div class="closing-callout__copy">
+        <span class="eyebrow">Mona’s publishing promise</span>
+        <h2>Fast updates, human judgment, cheerful branding.</h2>
+        <p>
+          Mona uses official GitHub sources to stay current, keeps the newest information near the top, and still
+          treats review as part of the publishing process.
+        </p>
+        <div class="source-links">
+          <a href="https://docs.github.com/" target="_blank" rel="noreferrer">docs.github.com</a>
+          <a href="https://github.blog/" target="_blank" rel="noreferrer">github.blog</a>
+          <a href="https://github.blog/changelog/" target="_blank" rel="noreferrer">github.blog/changelog</a>
+        </div>
+      </div>
+      <div class="closing-callout__art">
+        <img src={ducky.src} alt="Ducky artwork standing in for a cheerful mascot" />
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Mona Astro: Dev Server",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "cd site && npm run dev -- --host 0.0.0.0 --port 4321",
+      "preLaunchTask": "site: install",
+      "serverReadyAction": {
+        "pattern": "Local\\s+http://localhost:4321/|Local\\s+http://127\\.0\\.0\\.1:4321/",
+        "uriFormat": "http://localhost:4321/",
+        "action": "openExternally"
+      }
+    }
+  ]
+}
