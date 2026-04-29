@@ -17,7 +17,7 @@ env:
 jobs:
   find_exercise:
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.3
 
   check_step_work:
     name: Check step work
@@ -36,7 +36,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.0
+          ref: v0.9.3
 
       - name: Find last comment
         id: find-last-comment
@@ -58,14 +58,14 @@ jobs:
       - name: Check setup workflow exists
         id: check-setup-file
         continue-on-error: true
-        uses: skills/exercise-toolkit/actions/file-exists@v0.9.0
+        uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
         with:
           file: .github/workflows/copilot-setup-steps.yml
 
       - name: Check workflow installs gh-aw
         id: check-setup-action
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v2
         with:
           text-file: .github/workflows/copilot-setup-steps.yml
           keyphrase: github/gh-aw/actions/setup-cli
@@ -73,7 +73,7 @@ jobs:
       - name: Check workflow has copilot-setup-steps job
         id: check-setup-job
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v2
         with:
           text-file: .github/workflows/copilot-setup-steps.yml
           keyphrase: copilot-setup-steps
@@ -117,7 +117,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.0
+          ref: v0.9.3
 
       - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1

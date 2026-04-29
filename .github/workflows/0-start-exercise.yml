@@ -19,7 +19,7 @@ jobs:
     if: |
       !github.event.repository.is_template
     name: Start Exercise
-    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.0
+    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.3
     with:
       exercise-title: "Getting Started with Agentic Workflows"
       intro-message: "Practice installing and creating agentic workflows for Mona's GitHub Info website"
@@ -43,7 +43,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.0
+          ref: v0.9.3
 
       - name: Create comment - add step content
         uses: GrantBirki/comment@v2.1.1
