@@ -19,7 +19,7 @@ jobs:
   find_exercise:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     name: Find Exercise Issue
-    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.0
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.3
 
   check_step_work:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
@@ -39,7 +39,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.0
+          ref: v0.9.3
 
       - name: Find last comment
         id: find-last-comment
@@ -61,14 +61,14 @@ jobs:
       - name: Check workflow file exists
         id: check-workflow-file
         continue-on-error: true
-        uses: skills/exercise-toolkit/actions/file-exists@v0.9.0
+        uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
         with:
           file: .github/workflows/update-github-info.md
 
       - name: Check workflow supports manual runs
         id: check-workflow-dispatch
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v2
         with:
           text-file: .github/workflows/update-github-info.md
           keyphrase: workflow_dispatch
@@ -76,7 +76,7 @@ jobs:
       - name: Check workflow has a schedule
         id: check-workflow-schedule
         continue-on-error: true
-        uses: skills/action-keyphrase-checker@v1
+        uses: skills/action-keyphrase-checker@v2
         with:
           text-file: .github/workflows/update-github-info.md
           keyphrase: schedule
@@ -139,7 +139,7 @@ jobs:
         with:
           repository: skills/exercise-toolkit
           path: exercise-toolkit
-          ref: v0.9.0
+          ref: v0.9.3
 
       - name: Create comment - step finished - final review next
         uses: GrantBirki/comment@v2.1.1
@@ -164,7 +164,7 @@ jobs:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     name: Finish Exercise
     needs: [find_exercise, post_review_content]
-    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.9.0
+    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.9.3
     with:
       issue-url: ${{ needs.find_exercise.outputs.issue-url }}
       exercise-title: "Getting Started with Agentic Workflows"
