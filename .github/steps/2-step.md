@@ -46,7 +46,7 @@ In this step, you'll create a workflow definition in `.github/workflows/` and pa
    Update the website with concise changes and open a pull request for Mona to review.
    ```
 
-6. Commit your changes to the pull request branch.
+6. Commit your changes and open a pull request from your branch into `main`.
 
 7. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
