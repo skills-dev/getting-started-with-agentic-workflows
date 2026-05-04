@@ -3,7 +3,7 @@ name: Step 4 # Last step of the exercise
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["update-github-info"]
+    workflows: ["update-github-info", "Update GitHub Info"]
     types: [completed]
 
 permissions:
