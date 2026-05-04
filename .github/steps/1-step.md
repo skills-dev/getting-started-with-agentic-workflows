@@ -2,6 +2,18 @@
 
 Mona's website needs repository-level setup before an agentic workflow can help. In this step, you'll add the GitHub Agentic Workflows setup workflow and merge it to `main`.
 
+### 📖 Theory: What are Agentic Workflows?
+
+[**Agentic workflows**](https://github.github.com/gh-aw/introduction/overview/) are AI-powered automation that can understand context, make decisions, and take meaningful actions—all from natural language instructions you write in markdown.
+
+Unlike traditional automation with fixed if-then rules, agentic workflows use coding agents (like Copilot CLI, Claude, or Codex) to:
+
+- **Understand context**: Read your repository, issues, and pull requests to grasp the current situation.
+- **Make decisions**: Choose appropriate actions based on the context, not just predefined conditions.
+- **Adapt behavior**: Respond flexibly to different scenarios without requiring explicit programming for each case.
+
+You describe what you want to happen in a markdown file with a YAML frontmatter trigger. The `gh aw compile` command turns that markdown into a hardened GitHub Actions workflow (`.lock.yml`) that runs an AI agent in a containerized environment. Workflows are read-only by default, and write operations are only allowed through sanitized [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) such as creating issues, comments, and pull requests—so AI agents stay within controlled boundaries.
+
 ### 📖 Theory: Setting Up a Repository for Agentic Workflows
 
 GitHub Agentic Workflows use repository files and GitHub Actions to give AI agents a safe, repeatable place to work. A setup workflow can install the `gh aw` tooling for GitHub Actions so future workflows can create or maintain automation in this repository.

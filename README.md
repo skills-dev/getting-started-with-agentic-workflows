@@ -20,18 +20,6 @@ In this exercise, you will:
 1. Create an agentic workflow that drafts website updates in a pull request.
 1. Operationalize the workflow with manual and scheduled runs, and document the human review loop.
 
-### What are Agentic Workflows?
-
-[**Agentic workflows**](https://github.github.com/gh-aw/introduction/overview/) are AI-powered automation that can understand context, make decisions, and take meaningful actions—all from natural language instructions you write in markdown.
-
-Unlike traditional automation with fixed if-then rules, agentic workflows use coding agents (like Copilot CLI, Claude, or Codex) to:
-
-- **Understand context**: Read your repository, issues, and pull requests to grasp the current situation.
-- **Make decisions**: Choose appropriate actions based on the context, not just predefined conditions.
-- **Adapt behavior**: Respond flexibly to different scenarios without requiring explicit programming for each case.
-
-You describe what you want to happen in a markdown file with a YAML frontmatter trigger. The `gh aw compile` command turns that markdown into a hardened GitHub Actions workflow (`.lock.yml`) that runs an AI agent in a containerized environment. Workflows are read-only by default, and write operations are only allowed through sanitized [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) such as creating issues, comments, and pull requests—so AI agents stay within controlled boundaries.
-
 ### How to start this exercise
 
 Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
