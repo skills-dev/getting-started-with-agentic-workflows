@@ -12,13 +12,14 @@ _Learn how to install GitHub Agentic Workflows and create an AI-powered workflow
   - Basic familiarity with GitHub repositories, branches, and pull requests
   - Comfort editing YAML and Markdown files
 
-- **How long**: This exercise takes less than 30 minutes to complete.
+- **How long**: This exercise takes less than 45 minutes to complete.
 
 In this exercise, you will:
 
 1. Install the repository setup for GitHub Agentic Workflows and merge it to `main`.
 1. Create an agentic workflow that drafts website updates in a pull request.
 1. Operationalize the workflow with manual and scheduled runs, and document the human review loop.
+1. Run the workflow and inspect the pull request it creates for Mona.
 
 ### How to start this exercise
 

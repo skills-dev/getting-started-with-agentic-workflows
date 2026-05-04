@@ -10,6 +10,7 @@ Here's what you accomplished:
 - **Created a website updater** — You drafted a workflow for Mona's GitHub Info website that uses repository notes plus the GitHub Blog and GitHub Changelog.
 - **Added a human review loop** — You designed the workflow to propose changes in a pull request for Mona.
 - **Operationalized the workflow** — You added manual and scheduled execution and documented how the automation works.
+- **Ran the agentic workflow** — You compiled Mona's updater, ran it, and inspected the pull request it generated.
 
 ### What's next?
 

@@ -20,13 +20,34 @@ GitHub Agentic Workflows use repository files and GitHub Actions to give AI agen
 
 The [`gh aw` CLI](https://github.github.com/gh-aw/setup/cli/) and setup action are commonly used to prepare a repository for agentic workflows. In this exercise, you'll add the repository setup as code, review it in a pull request, and then merge it to `main`.
 
-### ⌨️ Activities
+### :keyboard: Activity: Set up your Codespace and agentic workflow tooling
 
-1. Create a new branch from `main`.
+Let's start in the pre-configured Codespace for this exercise. The dev container installs the website dependencies and enables the GitHub Copilot extensions for VS Code.
 
-2. Add `.github/workflows/copilot-setup-steps.yml` with a workflow that checks out the repository and installs the `gh-aw` CLI by using `github/gh-aw/actions/setup-cli`.
+1. Use the button below to open the **Create Codespace** page in a new tab. Use the default configuration.
 
-3. You can use this starter example:
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/{{full_repo_name}}?quickstart=1)
+
+2. Confirm the **Repository** field is your copy of the exercise, not the original template, then click the green **Create Codespace** button.
+   - ✅ Your copy: `/{{full_repo_name}}`
+   - ❌ Original: `/skills-dev/getting-started-with-agentic-workflows`
+
+3. Wait for Visual Studio Code to load in your browser. The `.devcontainer` setup may take a few minutes while it installs dependencies and verifies the Astro site build.
+
+4. Open Copilot Chat and switch to **Agent** mode.
+
+5. Ask Copilot to create the setup workflow for you.
+
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
+   >
+   > ```prompt
+   > Create a new branch named install-agentic-workflows.
+   > Add .github/workflows/copilot-setup-steps.yml with a workflow named "Copilot Setup Steps".
+   > The workflow should run on workflow_dispatch and when .github/workflows/copilot-setup-steps.yml changes.
+   > Add a job named copilot-setup-steps that runs on ubuntu-latest, checks out the repository, and installs the gh-aw CLI using github/gh-aw/actions/setup-cli@main.
+   > ```
+
+6. Review Copilot's suggested changes. The finished file should look similar to this:
 
    ```yaml
    name: "Copilot Setup Steps"
@@ -49,11 +70,18 @@ The [`gh aw` CLI](https://github.github.com/gh-aw/setup/cli/) and setup action a
            uses: github/gh-aw/actions/setup-cli@main
    ```
 
-4. Open a pull request for your branch.
+7. Ask Copilot to commit, push, and open a pull request.
 
-5. Merge the pull request into `main`.
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
+   >
+   > ```prompt
+   > Commit the setup workflow change, push the install-agentic-workflows branch, and open a pull request into main.
+   > Use the pull request title "Add Copilot setup workflow".
+   > ```
 
-6. Wait about 20 seconds, then refresh the exercise issue for the next step.
+8. Merge the pull request into `main`.
+
+9. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

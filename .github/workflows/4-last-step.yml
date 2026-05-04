@@ -1,28 +1,26 @@
-name: Step 3 # Last step of the exercise
+name: Step 4 # Last step of the exercise
 
 on:
   workflow_dispatch:
-  pull_request:
-    types: [closed]
-    branches:
-      - main
+  workflow_run:
+    workflows: ["update-github-info"]
+    types: [completed]
 
 permissions:
-  contents: write
+  contents: read
   actions: write
   issues: write
+  pull-requests: read
 
 env:
   REVIEW_FILE: ".github/steps/x-review.md"
 
 jobs:
   find_exercise:
-    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     name: Find Exercise Issue
     uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@v0.9.3
 
   check_step_work:
-    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     name: Check step work
     runs-on: ubuntu-latest
     needs: [find_exercise]
@@ -58,42 +56,52 @@ jobs:
           file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
           edit-mode: replace
 
-      - name: Check workflow file exists
-        id: check-workflow-file
+      - name: Check Mona notes were updated
+        id: check-notes-request
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v2
+        with:
+          text-file: notes/mona-notes.md
+          keyphrase: Mona updater request
+
+      - name: Check compiled workflow exists
+        id: check-lock-file
         continue-on-error: true
         uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
         with:
-          file: .github/workflows/update-github-info.md
+          file: .github/workflows/update-github-info.lock.yml
 
-      - name: Check workflow supports manual runs
-        id: check-workflow-dispatch
+      - name: Check compiled workflow references Copilot secret
+        id: check-copilot-secret
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v2
         with:
-          text-file: .github/workflows/update-github-info.md
-          keyphrase: workflow_dispatch
+          text-file: .github/workflows/update-github-info.lock.yml
+          keyphrase: COPILOT_GITHUB_TOKEN
 
-      - name: Check workflow has a schedule
-        id: check-workflow-schedule
-        continue-on-error: true
-        uses: skills/action-keyphrase-checker@v2
-        with:
-          text-file: .github/workflows/update-github-info.md
-          keyphrase: schedule
-
-      - name: Check README documents the sources
-        id: check-readme-sources
+      - name: Find generated PR that updates website content
+        id: find-generated-pr
         continue-on-error: true
         run: |
-          grep -q 'GitHub Blog' README.md
-          grep -q 'GitHub Changelog' README.md
+          for pr_number in $(gh pr list --state open --limit 20 --json number --jq '.[].number'); do
+            if gh pr diff "$pr_number" --name-only | grep -q '^site/content/github-info.md$'; then
+              echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "No open pull request updates site/content/github-info.md"
+          exit 1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check README documents Mona review through pull requests
-        id: check-readme-review
+      - name: Check generated PR title mentions Mona or GitHub Info
+        id: check-pr-title
         continue-on-error: true
         run: |
-          grep -Eiq 'pull request|pull requests' README.md
-          grep -q 'notes/mona-notes.md' README.md
+          title="$(gh pr view "${{ steps.find-generated-pr.outputs.pr_number }}" --json title --jq .title)"
+          echo "$title" | grep -Eiq 'Mona|GitHub Info|website update'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -104,25 +112,24 @@ jobs:
           edit-mode: replace
           file: exercise-toolkit/markdown-templates/step-feedback/step-results-table.md
           vars: |
-            step_number: 3
+            step_number: 4
             results_table:
-              - description: "Checked for .github/workflows/update-github-info.md"
-                passed: ${{ steps.check-workflow-file.outcome == 'success' }}
-              - description: "Checked that the workflow supports workflow_dispatch"
-                passed: ${{ steps.check-workflow-dispatch.outcome == 'success' }}
-              - description: "Checked that the workflow has a schedule"
-                passed: ${{ steps.check-workflow-schedule.outcome == 'success' }}
-              - description: "Checked that README documents the GitHub Blog and GitHub Changelog"
-                passed: ${{ steps.check-readme-sources.outcome == 'success' }}
-              - description: "Checked that README documents Mona's pull request review loop"
-                passed: ${{ steps.check-readme-review.outcome == 'success' }}
+              - description: "Checked that Mona's notes include a new updater request"
+                passed: ${{ steps.check-notes-request.outcome == 'success' }}
+              - description: "Checked for .github/workflows/update-github-info.lock.yml"
+                passed: ${{ steps.check-lock-file.outcome == 'success' }}
+              - description: "Checked that the compiled workflow references COPILOT_GITHUB_TOKEN"
+                passed: ${{ steps.check-copilot-secret.outcome == 'success' }}
+              - description: "Checked that an open generated pull request updates site/content/github-info.md"
+                passed: ${{ steps.find-generated-pr.outcome == 'success' }}
+              - description: "Checked that the generated pull request title mentions Mona, GitHub Info, or a website update"
+                passed: ${{ steps.check-pr-title.outcome == 'success' }}
 
       - name: Fail job if not all checks passed
         if: contains(steps.*.outcome, 'failure')
         run: exit 1
 
   post_review_content:
-    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     name: Post review content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
@@ -161,7 +168,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   finish_exercise:
-    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     name: Finish Exercise
     needs: [find_exercise, post_review_content]
     uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.9.3

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" role="img" aria-labelledby="title desc">
+  <title id="title">Generated pull request placeholder</title>
+  <desc id="desc">Placeholder showing a generated Mona website update pull request in the pull request list.</desc>
+  <rect width="900" height="420" fill="#f6f8fa"/>
+  <rect x="36" y="36" width="828" height="348" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="64" y="84" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#24292f">Pull requests</text>
+  <rect x="64" y="120" width="772" height="72" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <circle cx="92" cy="156" r="10" fill="#1a7f37"/>
+  <text x="120" y="150" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#0969da">[mona] Update GitHub Info website</text>
+  <text x="120" y="176" font-family="Arial, sans-serif" font-size="14" fill="#57606a">opened by github-actions after running update-github-info</text>
+  <rect x="64" y="224" width="772" height="88" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="88" y="260" font-family="Arial, sans-serif" font-size="17" fill="#24292f">Open the generated pull request and review Mona's proposed website update.</text>
+  <text x="88" y="288" font-family="Arial, sans-serif" font-size="15" fill="#57606a">Replace this placeholder with a screenshot from a copied exercise repository.</text>
+</svg>
