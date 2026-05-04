@@ -105,6 +105,7 @@ jobs:
         run: |
           grep -q 'network' .github/workflows/update-github-info.md
           grep -q 'github.blog' .github/workflows/update-github-info.md
+          grep -q 'github.com' .github/workflows/update-github-info.md
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
