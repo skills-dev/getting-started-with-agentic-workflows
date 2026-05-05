@@ -2,6 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "workspace: ready terminal",
+      "type": "shell",
+      "command": "echo 'Codespace ready. CLI tools available: gh, copilot, and gh aw.' && exec bash -l",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true,
+        "clear": false
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
       "label": "site: install",
       "type": "shell",
       "command": "npm ci",
