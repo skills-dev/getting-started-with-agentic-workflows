@@ -8,23 +8,35 @@ An agentic workflow can read repository context, compare sources, draft changes,
 
 In this step, you'll create a workflow definition in `.github/workflows/` and pair it with a real content update in the website source. Your workflow should tell the agent to read Mona's notes, check the GitHub Blog and the GitHub Changelog, and then prepare a pull request for Mona to review.
 
-### ⌨️ Activities
+### :keyboard: Activity: Create Mona's updater workflow
 
-1. Create a new branch from `main` for Mona's content workflow.
+Continue working in VS Code. If you closed your browser editor, reopen your development environment from your repository's **Code** menu.
 
-2. Update `site/content/github-info.md` with a fresh website change. For example, add a new section like `## Latest GitHub Updates` and include at least one short update for readers.
+1. Ask Copilot to create the content workflow branch and draft the required files.
 
-3. Create `.github/workflows/update-github-info.md` for your agentic workflow.
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
+   >
+   > ```prompt
+   > Make sure I am on the latest main branch, then create a new branch named create-mona-updater.
+   > Update site/content/github-info.md with a new section named "Latest GitHub Updates" and include at least one concise update for readers.
+   > Create .github/workflows/update-github-info.md as an agentic workflow markdown file.
+   > Give the workflow edit access through the tools configuration.
+   > The workflow should use safe-outputs with create-pull-request so the agent can propose changes without writing directly to main.
+   > The workflow instructions should tell the agent to read notes/mona-notes.md, use the GitHub Blog, use the GitHub Changelog, update site/content/github-info.md, and open a pull request for Mona to review.
+   > Ask the agent to use a pull request title that mentions Mona or GitHub Info.
+   > ```
 
-4. In that workflow file, make sure you clearly instruct the agent to:
+2. Review Copilot's suggested changes. Make sure `site/content/github-info.md` includes `## Latest GitHub Updates`.
+
+3. In `.github/workflows/update-github-info.md`, make sure Copilot clearly instructed the agent to:
 
    - read `notes/mona-notes.md`
    - use the GitHub Blog
    - use the GitHub Changelog
    - update `site/content/github-info.md`
-   - create a pull request for Mona to review
+   - create a pull request for Mona to review using `safe-outputs`
 
-5. If you'd like a starting point, use something like this and customize it:
+4. The workflow file should look similar to this:
 
    ```markdown
    ---
@@ -32,6 +44,17 @@ In this step, you'll create a workflow definition in `.github/workflows/` and pa
    description: Draft website updates for Mona's GitHub Info site.
    on:
      workflow_dispatch:
+   safe-outputs:
+     create-pull-request:
+       title-prefix: "[mona] "
+       draft: true
+       fallback-as-issue: false
+   tools:
+     edit:
+   network:
+     allowed:
+       - github.com
+       - github.blog
    ---
 
    # Update Mona's GitHub Info website
@@ -43,18 +66,25 @@ In this step, you'll create a workflow definition in `.github/workflows/` and pa
    - GitHub Blog
    - GitHub Changelog
 
-   Update the website with concise changes and open a pull request for Mona to review.
+   Update the website with concise changes and open a pull request for Mona to review. Use a pull request title that mentions Mona or GitHub Info.
    ```
 
-6. Commit your changes and open a pull request from your branch into `main`.
+5. Ask Copilot to commit, push, and open a pull request.
 
-7. Wait about 20 seconds, then refresh the exercise issue for the next step.
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
+   >
+   > ```prompt
+   > Commit the website content and agentic workflow changes, push the create-mona-updater branch, and open a pull request into main.
+   > Use the pull request title "Create Mona website updater workflow".
+   > ```
+
+6. Keep the pull request open. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
 - The grading check looks for both a website content update and a new workflow file.
-- Include the phrases `GitHub Blog`, `GitHub Changelog`, and `pull request` in `.github/workflows/update-github-info.md`.
+- Include the phrases `GitHub Blog`, `GitHub Changelog`, `safe-outputs`, `create-pull-request`, and `pull request` in `.github/workflows/update-github-info.md`.
 - Keep your workflow in markdown (`.md`) so the exercise focuses on the agent instructions.
 
 </details>

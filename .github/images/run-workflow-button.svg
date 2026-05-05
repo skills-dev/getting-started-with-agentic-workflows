@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" role="img" aria-labelledby="title desc">
+  <title id="title">Run workflow button placeholder</title>
+  <desc id="desc">Placeholder showing the GitHub Actions Run workflow button.</desc>
+  <rect width="900" height="420" fill="#f6f8fa"/>
+  <rect x="32" y="32" width="836" height="356" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="64" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#24292f">Actions</text>
+  <rect x="64" y="112" width="260" height="220" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="88" y="150" font-family="Arial, sans-serif" font-size="16" fill="#57606a">All workflows</text>
+  <text x="88" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0969da">update-github-info</text>
+  <rect x="612" y="112" width="172" height="44" rx="6" fill="#2da44e"/>
+  <text x="640" y="140" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Run workflow</text>
+  <rect x="372" y="196" width="412" height="88" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="396" y="232" font-family="Arial, sans-serif" font-size="17" fill="#24292f">Select the compiled updater workflow,</text>
+  <text x="396" y="260" font-family="Arial, sans-serif" font-size="17" fill="#24292f">then choose Run workflow.</text>
+</svg>

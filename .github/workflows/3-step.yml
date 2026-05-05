@@ -1,4 +1,4 @@
-name: Step 3 # Last step of the exercise
+name: Step 3
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   issues: write
 
 env:
-  REVIEW_FILE: ".github/steps/x-review.md"
+  STEP_4_FILE: ".github/steps/4-step.md"
 
 jobs:
   find_exercise:
@@ -121,9 +121,9 @@ jobs:
         if: contains(steps.*.outcome, 'failure')
         run: exit 1
 
-  post_review_content:
+  post_next_step_content:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
-    name: Post review content
+    name: Post next step content
     needs: [find_exercise, check_step_work]
     runs-on: ubuntu-latest
     env:
@@ -141,30 +141,33 @@ jobs:
           path: exercise-toolkit
           ref: v0.9.3
 
-      - name: Create comment - step finished - final review next
+      - name: Create comment - step finished
         uses: GrantBirki/comment@v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
-          file: exercise-toolkit/markdown-templates/step-feedback/lesson-review.md
+          file: exercise-toolkit/markdown-templates/step-feedback/step-finished-prepare-next-step.md
+          vars: |
+            next_step_number: 4
 
-      - name: Create comment - add review content
+      - name: Create comment - add step content
         uses: GrantBirki/comment@v2.1.1
         with:
           repository: ${{ env.ISSUE_REPOSITORY }}
           issue-number: ${{ env.ISSUE_NUMBER }}
-          file: ${{ env.REVIEW_FILE }}
+          file: ${{ env.STEP_4_FILE }}
 
-      - name: Disable current workflow
-        run: gh workflow disable "${{github.workflow}}"
+      - name: Create comment - watching for progress
+        uses: GrantBirki/comment@v2.1.1
+        with:
+          repository: ${{ env.ISSUE_REPOSITORY }}
+          issue-number: ${{ env.ISSUE_NUMBER }}
+          file: exercise-toolkit/markdown-templates/step-feedback/watching-for-progress.md
+
+      - name: Disable current workflow and enable next one
+        run: |
+          gh workflow disable "${{github.workflow}}"
+          gh workflow enable "Step 4"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  finish_exercise:
-    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
-    name: Finish Exercise
-    needs: [find_exercise, post_review_content]
-    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@v0.9.3
-    with:
-      issue-url: ${{ needs.find_exercise.outputs.issue-url }}
-      exercise-title: "Getting Started with Agentic Workflows"

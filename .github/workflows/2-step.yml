@@ -92,6 +92,21 @@ jobs:
         run: |
           grep -Eiq 'pull request.*Mona|Mona.*pull request|review.*Mona' .github/workflows/update-github-info.md
 
+      - name: Check workflow uses pull request safe output
+        id: check-workflow-safe-output
+        continue-on-error: true
+        run: |
+          grep -q 'safe-outputs' .github/workflows/update-github-info.md
+          grep -q 'create-pull-request' .github/workflows/update-github-info.md
+
+      - name: Check workflow declares network access
+        id: check-workflow-network
+        continue-on-error: true
+        run: |
+          grep -q 'network' .github/workflows/update-github-info.md
+          grep -q 'github.blog' .github/workflows/update-github-info.md
+          grep -q 'github.com' .github/workflows/update-github-info.md
+
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
         with:
@@ -113,6 +128,10 @@ jobs:
                 passed: ${{ steps.check-workflow-sources.outcome == 'success' }}
               - description: "Checked that the workflow creates a pull request for Mona"
                 passed: ${{ steps.check-workflow-review.outcome == 'success' }}
+              - description: "Checked that the workflow uses the create-pull-request safe output"
+                passed: ${{ steps.check-workflow-safe-output.outcome == 'success' }}
+              - description: "Checked that the workflow declares network access for GitHub Blog and Changelog sources"
+                passed: ${{ steps.check-workflow-network.outcome == 'success' }}
 
       - name: Fail job if not all checks passed
         if: contains(steps.*.outcome, 'failure')
