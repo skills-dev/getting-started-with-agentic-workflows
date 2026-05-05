@@ -12,6 +12,6 @@ if [ ! -d node_modules ]; then
 fi
 
 echo "[postStart] Workspace ready."
-echo "[postStart] CLI tools available: gh and copilot. You'll install gh-aw in Step 1."
+echo "[postStart] CLI tools available: gh and copilot."
 echo "[postStart] Start the site with the VS Code launch config 'Mona Astro: Dev Server' or the task 'site: dev'."
 echo "[postStart] When running, the site will be available on port 4321."
