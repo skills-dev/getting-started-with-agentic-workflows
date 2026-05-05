@@ -22,7 +22,7 @@ The [`gh aw` CLI](https://github.github.com/gh-aw/setup/cli/) and setup action a
 
 ### :keyboard: Activity: Set up your Codespace and agentic workflow tooling
 
-Let's start in the pre-configured Codespace for this exercise. The dev container installs the website dependencies, the GitHub CLI, Copilot CLI, the `gh-aw` extension, and the GitHub Copilot extensions for VS Code.
+Let's start in the pre-configured Codespace for this exercise. The dev container installs the website dependencies, the GitHub CLI, Copilot CLI, the GitHub Copilot extensions for VS Code, and opens a terminal in the editor.
 
 1. Use the button below to open the **Create Codespace** page in a new tab. Use the default configuration.
 
@@ -34,9 +34,17 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
 3. Wait for Visual Studio Code to load in your browser. The `.devcontainer` setup may take a few minutes while it installs dependencies and verifies the Astro site build.
 
-4. Open Copilot Chat and switch to **Agent** mode.
+4. In the terminal that opened in the editor, run the official standalone installer to install or update the GitHub Agentic Workflows CLI extension.
 
-5. Ask Copilot to create the setup workflow for you.
+   ```bash
+   curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
+   ```
+
+   This standalone installer is the easiest path in Codespaces because it does not depend on interactive `gh extension install` authentication.
+
+5. Open Copilot Chat and switch to **Agent** mode.
+
+6. Ask Copilot to create the setup workflow for you.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -47,7 +55,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    > Add a job named copilot-setup-steps that runs on ubuntu-latest, checks out the repository, and installs the gh-aw CLI using github/gh-aw/actions/setup-cli@main.
    > ```
 
-6. Review Copilot's suggested changes. The finished file should look similar to this:
+7. Review Copilot's suggested changes. The finished file should look similar to this:
 
    ```yaml
    name: "Copilot Setup Steps"
@@ -70,7 +78,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
            uses: github/gh-aw/actions/setup-cli@main
    ```
 
-7. Ask Copilot to commit, push, and open a pull request.
+8. Ask Copilot to commit, push, and open a pull request.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -79,9 +87,9 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    > Use the pull request title "Add Copilot setup workflow".
    > ```
 
-8. Merge the pull request into `main`.
+9. Merge the pull request into `main`.
 
-9. Wait about 20 seconds, then refresh the exercise issue for the next step.
+10. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

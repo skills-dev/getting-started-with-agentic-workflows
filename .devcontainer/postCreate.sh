@@ -8,11 +8,7 @@ echo "[postCreate] Installing GitHub Copilot CLI..."
 npm install -g @github/copilot
 
 echo "[postCreate] Installing GitHub Agentic Workflows CLI extension..."
-if gh extension list | awk '{print $1}' | grep -qx "gh-aw"; then
-  echo "[postCreate] gh-aw extension already installed."
-else
-  gh extension install github/gh-aw
-fi
+curl -sL https://raw.githubusercontent.com/github/gh-aw/main/install-gh-aw.sh | bash
 
 echo "[postCreate] Installing Mona Astro site dependencies..."
 cd "$SITE_DIR"
