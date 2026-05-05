@@ -2,6 +2,7 @@
   "name": "Mona Astro Website",
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
   "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts"
     }
@@ -23,6 +24,8 @@
         "github.copilot-chat"
       ],
       "settings": {
+        "task.allowAutomaticTasks": "on",
+        "terminal.integrated.defaultLocation": "editor",
         "files.exclude": {
           "**/site/node_modules": true,
           "**/site/.astro": true,
