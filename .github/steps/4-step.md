@@ -6,24 +6,15 @@ You now have an agentic workflow definition for Mona's website. In this step, yo
 
 Agentic workflows are authored as markdown files, but GitHub Actions runs compiled `.lock.yml` workflow files. The `gh aw compile` command turns `.github/workflows/update-github-info.md` into `.github/workflows/update-github-info.lock.yml`.
 
-Because this workflow uses the default Copilot engine, the repository needs a `COPILOT_GITHUB_TOKEN` Actions secret before the compiled workflow can run. That secret is a fine-grained personal access token with the **Copilot Requests** account permission.
+Because this workflow uses the default Copilot engine, it needs the `COPILOT_GITHUB_TOKEN` Actions secret you added in Step 1 before the compiled workflow can run.
 
 The workflow uses `safe-outputs: create-pull-request`, so the agent can draft website changes without writing directly to `main`. The agent prepares a patch, and a separate permission-controlled job opens a pull request for Mona to review.
 
 ### :keyboard: Activity: Run the updater and inspect its pull request
 
-1. Confirm the repository has the `COPILOT_GITHUB_TOKEN` secret.
+1. Confirm the repository still has the `COPILOT_GITHUB_TOKEN` Actions secret from Step 1.
 
-   Go to your repository on GitHub, then choose **Settings** > **Secrets and variables** > **Actions**.
-
-   <img width="650" alt="Repository actions secrets settings page" src="../images/actions-secrets-settings.svg" />
-
-   If the secret is missing, [create a fine-grained personal access token](https://github.com/settings/personal-access-tokens/new?name=COPILOT_GITHUB_TOKEN&description=GitHub+Agentic+Workflows+-+Copilot+engine+authentication&user_copilot_requests=read) with **Copilot Requests** set to **Read**, then add it as a repository secret named `COPILOT_GITHUB_TOKEN`.
-
-   <img width="650" alt="New repository secret form with COPILOT_GITHUB_TOKEN as the secret name" src="../images/add-copilot-github-token-secret.svg" />
-
-   > [!CAUTION]
-   > Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
+   If you need to check, go to **Settings** > **Secrets and variables** > **Actions** in your copied exercise repository. You should see `COPILOT_GITHUB_TOKEN` listed as a repository secret.
 
 2. Ask Copilot to compile and run Mona's updater.
 

@@ -42,9 +42,26 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
    This standalone installer is the easiest path in Codespaces because it does not depend on interactive `gh extension install` authentication.
 
-5. Open Copilot Chat and switch to **Agent** mode.
+5. Set up the `COPILOT_GITHUB_TOKEN` repository secret that the Copilot engine will use later in the exercise.
 
-6. Ask Copilot to create the setup workflow for you.
+   This exercise is designed for **public** repository copies. If you copied the exercise as a private repository, token setup may require additional account or organization policy configuration.
+
+   1. [Create a fine-grained personal access token](https://github.com/settings/personal-access-tokens/new?name=COPILOT_GITHUB_TOKEN&description=GitHub+Agentic+Workflows+-+Copilot+engine+authentication&user_copilot_requests=read) with **Copilot Requests** set to **Read**.
+   2. Copy the token value.
+   3. In your copied exercise repository, go to **Settings** > **Secrets and variables** > **Actions**.
+   4. Select **New repository secret**.
+   5. Name the secret `COPILOT_GITHUB_TOKEN`, paste the token value, and save it.
+
+   <img width="650" alt="Repository actions secrets settings page" src="../images/actions-secrets-settings.svg" />
+
+   <img width="650" alt="New repository secret form with COPILOT_GITHUB_TOKEN as the secret name" src="../images/add-copilot-github-token-secret.svg" />
+
+   > [!CAUTION]
+   > Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
+
+6. Open Copilot Chat and switch to **Agent** mode.
+
+7. Ask Copilot to create the setup workflow for you.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -55,7 +72,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    > Add a job named copilot-setup-steps that runs on ubuntu-latest, checks out the repository, and installs the gh-aw CLI using github/gh-aw/actions/setup-cli@main.
    > ```
 
-7. Review Copilot's suggested changes. The finished file should look similar to this:
+8. Review Copilot's suggested changes. The finished file should look similar to this:
 
    ```yaml
    name: "Copilot Setup Steps"
@@ -78,7 +95,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
            uses: github/gh-aw/actions/setup-cli@main
    ```
 
-8. Ask Copilot to commit, push, and open a pull request.
+9. Ask Copilot to commit, push, and open a pull request.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -87,15 +104,16 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    > Use the pull request title "Add Copilot setup workflow".
    > ```
 
-9. Merge the pull request into `main`.
+10. Merge the pull request into `main`.
 
-10. Wait about 20 seconds, then refresh the exercise issue for the next step.
+11. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
 - Make sure the file path is exactly `.github/workflows/copilot-setup-steps.yml`.
 - The check looks for the `copilot-setup-steps` job and the `github/gh-aw/actions/setup-cli` action.
+- Make sure `COPILOT_GITHUB_TOKEN` is a repository Actions secret, not a value committed to the repository.
 - Step 1 only completes after your setup pull request is merged into `main`.
 
 </details>
