@@ -44,7 +44,10 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
 5. Set up the `COPILOT_GITHUB_TOKEN` repository secret that the Copilot engine will use later in the exercise.
 
-   This exercise is designed for **public** repository copies. If you copied the exercise as a private repository, token setup may require additional account or organization policy configuration.
+   > [!IMPORTANT]
+   > This exercise is designed for **public** repository copies.
+   > If you copied the exercise as a private repository, token setup may
+   > require additional account or organization policy configuration.
 
    1. [Create a fine-grained personal access token](https://github.com/settings/personal-access-tokens/new?name=COPILOT_GITHUB_TOKEN&description=GitHub+Agentic+Workflows+-+Copilot+engine+authentication&user_copilot_requests=read) with **Copilot Requests** set to **Read**.
    2. Copy the token value.
