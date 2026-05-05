@@ -6,7 +6,18 @@
       "type": "shell",
       "command": "echo 'Codespace ready. CLI tools available: gh and copilot.' && exec bash -l",
       "isBackground": true,
-      "problemMatcher": [],
+      "problemMatcher": {
+        "owner": "custom",
+        "pattern": {
+          "regexp": "^(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "^Codespace ready\\. CLI tools available: gh, copilot, and gh aw\\.$"
+        }
+      },
       "presentation": {
         "reveal": "always",
         "panel": "new",
