@@ -22,7 +22,7 @@ The [`gh aw` CLI](https://github.github.com/gh-aw/setup/cli/) and setup action a
 
 ### :keyboard: Activity: Set up your Codespace and agentic workflow tooling
 
-Let's start in the pre-configured Codespace for this exercise. The dev container installs the website dependencies and enables the GitHub Copilot extensions for VS Code.
+Let's start in the pre-configured Codespace for this exercise. The dev container installs the website dependencies, the GitHub CLI, Copilot CLI, the `gh-aw` extension, and the GitHub Copilot extensions for VS Code.
 
 1. Use the button below to open the **Create Codespace** page in a new tab. Use the default configuration.
 
