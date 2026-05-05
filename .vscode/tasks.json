@@ -15,7 +15,7 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": ".",
-          "endsPattern": "^Codespace ready\\. CLI tools available: gh, copilot, and gh aw\\.$"
+          "endsPattern": "^Codespace ready\\. CLI tools available: gh and copilot\\.$"
         }
       },
       "presentation": {
