@@ -50,8 +50,8 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
    <img width="650" alt="New repository secret form with COPILOT_GITHUB_TOKEN as the secret name" src="../images/add-copilot-github-token-secret.svg" />
 
-   > [!CAUTION]
-   > Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
+> [!CAUTION]
+> Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
 
 7. Open Copilot Chat and switch to **Agent** mode.
 
