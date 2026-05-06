@@ -23,10 +23,13 @@ The workflow uses `safe-outputs: create-pull-request`, so the agent can draft we
    > ```prompt
    > Check that gh-aw is available in this repository.
    > Make sure I am on the latest main branch before changing files.
-   > Update notes/mona-notes.md with a short section named "Mona updater request" that asks the updater to highlight one recent GitHub Blog or GitHub Changelog update.
+   > Update notes/mona-notes.md with a short section named "Mona updater request"
+   > that asks the updater to highlight one recent GitHub Blog or GitHub Changelog update.
    > Compile .github/workflows/update-github-info.md with gh aw compile.
-   > Confirm .github/workflows/update-github-info.lock.yml was created and references COPILOT_GITHUB_TOKEN.
-   > Then run the update-github-info workflow with gh aw run update-github-info --push --ref main and help me open the generated workflow run.
+   > Confirm .github/workflows/update-github-info.lock.yml was created
+   > and references COPILOT_GITHUB_TOKEN.
+   > Then run the update-github-info workflow with gh aw run update-github-info --push --ref main
+   > and help me open the generated workflow run.
    > ```
 
 3. If you prefer the GitHub UI, open the **Actions** tab, select the compiled updater workflow, and choose **Run workflow**.
