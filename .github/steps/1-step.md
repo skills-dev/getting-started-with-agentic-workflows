@@ -44,11 +44,6 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
 5. Set up the `COPILOT_GITHUB_TOKEN` repository secret that the Copilot engine will use later in the exercise.
 
-   > [!IMPORTANT]
-   > This exercise is designed for **public** repository copies.
-   > If you copied the exercise as a private repository, token setup may
-   > require additional account or organization policy configuration.
-
    1. [Create a fine-grained personal access token](https://github.com/settings/personal-access-tokens/new?name=COPILOT_GITHUB_TOKEN&description=GitHub+Agentic+Workflows+-+Copilot+engine+authentication&user_copilot_requests=read) with **Copilot Requests** set to **Read**.
    2. Copy the token value.
    3. In your copied exercise repository, go to **Settings** > **Secrets and variables** > **Actions**.
@@ -59,8 +54,8 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
    <img width="650" alt="New repository secret form with COPILOT_GITHUB_TOKEN as the secret name" src="../images/add-copilot-github-token-secret.svg" />
 
-   > [!CAUTION]
-   > Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
+> [!CAUTION]
+> Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
 
 6. Open Copilot Chat and switch to **Agent** mode.
 
