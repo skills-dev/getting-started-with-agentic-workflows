@@ -61,7 +61,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    >
    > ```prompt
    > - Create a new branch named initialize-agentic-workflows.
-   > - Run gh aw init --codespaces --create-pull-request
+   > - Run gh aw init --codespaces --create-pull-request --completions
    >   to initialize this repository for GitHub Agentic Workflows.
    > - If the command leaves changes locally instead of opening a pull request,
    >   commit the setup changes with the message
@@ -69,6 +69,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    >   and open a pull request into main.
    > - After the pull request is open, help me review
    >   the files that gh aw created.
+   > - Do not alter devcontainer.json config for our Mona Astro Site.
    > ```
 
 9. Review the pull request. It should include repository setup files such as:
