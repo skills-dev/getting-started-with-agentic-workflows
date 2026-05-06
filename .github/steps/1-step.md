@@ -4,21 +4,13 @@ Mona's website needs repository-level setup before an agentic workflow can help.
 
 ### 📖 Theory: What are Agentic Workflows?
 
-[**Agentic workflows**](https://github.github.com/gh-aw/introduction/overview/) are AI-powered automation that can understand context, make decisions, and take meaningful actions—all from natural language instructions you write in markdown.
+[**Agentic workflows**](https://github.github.com/gh-aw/introduction/overview/) are AI-powered automation that can understand repository context and take action from natural language instructions you write in markdown.
 
-Unlike traditional automation with fixed if-then rules, agentic workflows use coding agents (like Copilot CLI, Claude, or Codex) to:
-
-- **Understand context**: Read your repository, issues, and pull requests to grasp the current situation.
-- **Make decisions**: Choose appropriate actions based on the context, not just predefined conditions.
-- **Adapt behavior**: Respond flexibly to different scenarios without requiring explicit programming for each case.
-
-You describe what you want to happen in a markdown file with a YAML frontmatter trigger. The `gh aw compile` command turns that markdown into a hardened GitHub Actions workflow (`.lock.yml`) that runs an AI agent in a containerized environment. Workflows are read-only by default, and write operations are only allowed through sanitized [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) such as creating issues, comments, and pull requests—so AI agents stay within controlled boundaries.
+The `gh aw compile` command turns those markdown instructions into a hardened GitHub Actions workflow (`.lock.yml`). Workflows are read-only by default, and write operations go through controlled [`safe-outputs`](https://github.github.com/gh-aw/reference/safe-outputs/) such as creating issues, comments, and pull requests.
 
 ### 📖 Theory: Setting Up a Repository for Agentic Workflows
 
-GitHub Agentic Workflows use repository files and GitHub Actions to give AI agents a safe, repeatable place to work. The `gh aw init` command adds the setup files a repository needs for creating, compiling, and running agentic workflows.
-
-The [`gh aw` CLI](https://github.github.com/gh-aw/setup/cli/) can prepare the repository, update Codespaces configuration, and open a pull request with the setup changes. In this exercise, you'll review that pull request and merge it to `main`.
+The [`gh aw init`](https://github.github.com/gh-aw/setup/cli/) command adds the setup files a repository needs for agentic workflows. In this exercise, you'll use it in Codespaces, review the setup pull request, and merge it to `main`.
 
 ### :keyboard: Activity: Set up your Codespace and agentic workflow tooling
 
@@ -47,11 +39,6 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    This standalone installer is the easiest path in Codespaces because it does not depend on interactive `gh extension install` authentication.
 
 6. Set up the `COPILOT_GITHUB_TOKEN` repository secret that the Copilot engine will use later in the exercise.
-
-   > [!IMPORTANT]
-   > This exercise is designed for **public** repository copies.
-   > If you copied the exercise as a private repository, token setup may
-   > require additional account or organization policy configuration.
 
    1. [Create a fine-grained personal access token](https://github.com/settings/personal-access-tokens/new?name=COPILOT_GITHUB_TOKEN&description=GitHub+Agentic+Workflows+-+Copilot+engine+authentication&user_copilot_requests=read) with **Copilot Requests** set to **Read**.
    2. Copy the token value.
