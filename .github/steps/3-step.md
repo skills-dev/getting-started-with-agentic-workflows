@@ -17,9 +17,14 @@ Continue working in the same VS Code window and pull request branch from Step 2.
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > Update .github/workflows/update-github-info.md so the workflow can run manually with workflow_dispatch and automatically on a daily schedule.
-   > Also update README.md with a short section that explains Mona's GitHub Info website is updated from notes/mona-notes.md, the GitHub Blog, and the GitHub Changelog.
-   > The README should also explain that the workflow opens pull requests for Mona to review before changes are merged.
+   > - Update .github/workflows/update-github-info.md
+   >   so the workflow can run manually with workflow_dispatch
+   >   and automatically on a daily schedule.
+   > - Update README.md with a short section explaining
+   >   Mona's GitHub Info website is updated from notes/mona-notes.md,
+   >   the GitHub Blog, and the GitHub Changelog.
+   > - Explain in the README that the workflow opens pull requests
+   >   for Mona to review before changes are merged.
    > ```
 
 2. Review Copilot's suggested changes. Make sure:
@@ -34,7 +39,8 @@ Continue working in the same VS Code window and pull request branch from Step 2.
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > Commit the workflow scheduling and README documentation updates, then push them to the current branch.
+   > - Commit the workflow scheduling and README documentation updates.
+   > - Push them to the current branch.
    > ```
 
 4. Merge the pull request into `main`.

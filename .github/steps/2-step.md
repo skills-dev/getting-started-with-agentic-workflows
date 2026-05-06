@@ -17,13 +17,22 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > Make sure I am on the latest main branch, then create a new branch named create-mona-updater.
-   > Update site/content/github-info.md with a new section named "Latest GitHub Updates" and include at least one concise update for readers.
-   > Create .github/workflows/update-github-info.md as an agentic workflow markdown file.
-   > Give the workflow edit access through the tools configuration.
-   > The workflow should use safe-outputs with create-pull-request so the agent can propose changes without writing directly to main.
-   > The workflow instructions should tell the agent to read notes/mona-notes.md, use the GitHub Blog, use the GitHub Changelog, update site/content/github-info.md, and open a pull request for Mona to review.
-   > Ask the agent to use a pull request title that mentions Mona or GitHub Info.
+   > - Make sure I am on the latest main branch,
+   >   then create a new branch named create-mona-updater.
+   > - Update site/content/github-info.md with a new section
+   >   named "Latest GitHub Updates" and include at least
+   >   one concise update for readers.
+   > - Create .github/workflows/update-github-info.md
+   >   as an agentic workflow markdown file.
+   > - Give the workflow edit access through the tools configuration.
+   > - Use safe-outputs with create-pull-request so the agent can
+   >   propose changes without writing directly to main.
+   > - Tell the agent to read notes/mona-notes.md,
+   >   use the GitHub Blog, use the GitHub Changelog,
+   >   update site/content/github-info.md, and open
+   >   a pull request for Mona to review.
+   > - Ask the agent to use a pull request title that mentions
+   >   Mona or GitHub Info.
    > ```
 
 2. Review Copilot's suggested changes. Make sure `site/content/github-info.md` includes `## Latest GitHub Updates`.
@@ -74,8 +83,10 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > Commit the website content and agentic workflow changes, push the create-mona-updater branch, and open a pull request into main.
-   > Use the pull request title "Create Mona website updater workflow".
+   > - Commit the website content and agentic workflow changes.
+   > - Push the create-mona-updater branch.
+   > - Open a pull request into main.
+   > - Use the pull request title "Create Mona website updater workflow".
    > ```
 
 6. Keep the pull request open. Wait about 20 seconds, then refresh the exercise issue for the next step.
