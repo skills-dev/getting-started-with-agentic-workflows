@@ -101,7 +101,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v2
         with:
           text-file: .gitattributes
-          keyphrase: .github/workflows/*.lock.yml
+          keyphrase: .github/workflows/*.lock.yml linguist-generated=true merge=ours
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
