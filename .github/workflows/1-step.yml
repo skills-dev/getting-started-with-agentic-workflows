@@ -71,7 +71,7 @@ jobs:
         uses: skills/action-keyphrase-checker@v2
         with:
           text-file: .github/workflows/copilot-setup-steps.yml
-          keyphrase: github/gh-aw/actions/setup-cli
+          keyphrase: setup-cli
 
       - name: Check workflow has copilot-setup-steps job
         id: check-setup-job
@@ -80,6 +80,28 @@ jobs:
         with:
           text-file: .github/workflows/copilot-setup-steps.yml
           keyphrase: copilot-setup-steps
+
+      - name: Check agentic workflows agent exists
+        id: check-agent-file
+        continue-on-error: true
+        uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
+        with:
+          file: .github/agents/agentic-workflows.agent.md
+
+      - name: Check MCP config exists
+        id: check-mcp-file
+        continue-on-error: true
+        uses: skills/exercise-toolkit/actions/file-exists@v0.9.3
+        with:
+          file: .github/mcp.json
+
+      - name: Check gitattributes tracks lock files
+        id: check-gitattributes
+        continue-on-error: true
+        uses: skills/action-keyphrase-checker@v2
+        with:
+          text-file: .gitattributes
+          keyphrase: .github/workflows/*.lock.yml
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -98,6 +120,12 @@ jobs:
                 passed: ${{ steps.check-setup-action.outcome == 'success' }}
               - description: "Checked for the copilot-setup-steps job"
                 passed: ${{ steps.check-setup-job.outcome == 'success' }}
+              - description: "Checked for the Agentic Workflows agent file"
+                passed: ${{ steps.check-agent-file.outcome == 'success' }}
+              - description: "Checked for the MCP configuration file"
+                passed: ${{ steps.check-mcp-file.outcome == 'success' }}
+              - description: "Checked that workflow lock files are tracked in .gitattributes"
+                passed: ${{ steps.check-gitattributes.outcome == 'success' }}
 
       - name: Fail job if not all checks passed
         if: contains(steps.*.outcome, 'failure')
