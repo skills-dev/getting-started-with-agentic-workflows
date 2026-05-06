@@ -24,7 +24,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    - ✅ Your copy: `/{{full_repo_name}}`
    - ❌ Original: `/skills-dev/getting-started-with-agentic-workflows`
 
-3. Wait for Visual Studio Code to load in your browser. The `.devcontainer` setup may take a few minutes while it installs dependencies and verifies the Astro site build.
+3. Wait for Visual Studio Code to load in your browser. The codespace setup may take a few minutes while it installs dependencies and verifies the Astro site build.
 
 4. Try Mona's website locally. In the left sidebar, select **Run and Debug**, choose **Mona Astro: Dev Server**, and start the launch configuration.
 
