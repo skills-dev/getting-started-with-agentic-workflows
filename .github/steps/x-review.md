@@ -7,8 +7,8 @@ _Congratulations, you've completed this exercise and built your first hands-on G
 Here's what you accomplished:
 
 - **Installed agentic workflow setup** — You added the repository workflow that prepares GitHub agentic workflows tooling.
-- **Created a website updater** — You drafted a workflow for Mona's GitHub Info website that uses repository notes plus the GitHub Blog and GitHub Changelog.
-- **Added a human review loop** — You designed the workflow to propose changes in a pull request for Mona.
+- **Created a website updater** — You drafted a workflow for Mona's GitHub Info website that uses repository notes plus the GitHub Blog and GitHub Changelog, and compiles it to a `.lock.yml` workflow file.
+- **Added a new source site to the workflow** — You updated the workflow to include the [awesome-copilot workflows](https://awesome-copilot.github.com/workflows/) site as a source for `.github/workflows/update-github-info.md` and recompiled it.
 - **Ran the agentic workflow** — You compiled Mona's updater, ran it, and inspected the pull request it generated.
 
 ### What's next?

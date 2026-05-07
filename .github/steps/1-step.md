@@ -63,21 +63,24 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 > [!CAUTION]
 > Never paste a real token into a comment, markdown file, pull request, or Copilot Chat message. Only add it through the repository secrets UI.
 
-7. Open Copilot Chat and switch to **Agent** mode.
+7. Set the Actions workflow permissions to **Read and write permissions** so the agent can propose changes to the website content.
 
-8. Ask Copilot to initialize the repository with `gh aw`.
+   1. In your copied exercise repository, go to **Settings** > **Actions** > **General**.
+   2. Under **Workflow permissions**, select **Read and write permissions**.
+   3. Save the changes.
 
-   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
+   <details>
+     <summary>Actions workflow permissions details</summary><br/>
+
+     <img width="40%" alt="Actions workflow permissions 1" src="../images/actions-permissions-1.png" />
+  </details>
+
+8. Initialize the repository with `gh aw` in the terminal.
+
+   > ![Static Badge](https://img.shields.io/badge/Terminal-text?logo=gnometerminal&labelColor=0969da&color=ddf4ff)
    >
-   > ```prompt
-   > @terminal run these commands in the local codespace shell:
-   > 1. git checkout -b initialize-agentic-workflows
-   > 2. gh aw init --create-pull-request --completions
-   > 3. If the command leaves changes locally instead of opening a pull request:
-   >    - git add .
-   >    - git commit -m "Initialize GitHub agentic workflows"
-   >    - git push origin initialize-agentic-workflows
-   >    - gh pr create --base main
+   > ```bash
+   > gh aw init --create-pull-request --completions
    > ```
 
 9. Review the pull request that was opened. It should include repository setup files such as:
@@ -87,9 +90,9 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    - `.github/mcp.json`
    - `.gitattributes`
 
-10. Merge the setup pull request into `main`.
+3.  Merge the setup pull request into `main`.
 
-11. Wait about 20 seconds, then refresh the exercise issue for the next step.
+4.  Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

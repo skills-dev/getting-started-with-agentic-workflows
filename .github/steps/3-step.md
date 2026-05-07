@@ -12,41 +12,61 @@ The workflow uses `safe-outputs: create-pull-request`, so the agent can draft we
 
 ### :keyboard: Activity: Run the updater and inspect its pull request
 
+> [!IMPORTANT]
+> Make sure you are still using branch `create-mona-updater` from Step 2. If you switched branches, return to `create-mona-updater` before continuing.
+
 1. Confirm the repository still has the `COPILOT_GITHUB_TOKEN` Actions secret from Step 1.
 
    If you need to check, go to **Settings** > **Secrets and variables** > **Actions** in your copied exercise repository. You should see `COPILOT_GITHUB_TOKEN` listed as a repository secret.
 
-2. Ask Copilot to compile and run Mona's updater.
+2. Use agent mode in the Copilot Chat panel to update Mona's updater `.github/workflows/update-github-info.md`.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > - Check that gh-aw is available in this repository.
-   > - Make sure I am on the latest main branch before changing files.
-   > - Update notes/mona-notes.md with a short section named
-   >   "Mona updater request" that asks the updater to highlight
-   >   one recent GitHub Blog or GitHub Changelog update.
-   > - Compile .github/workflows/update-github-info.md with gh aw compile.
-   > - Confirm .github/workflows/update-github-info.lock.yml was created
-   >   and references COPILOT_GITHUB_TOKEN.
-   > - Run the update-github-info workflow with:
-   >   gh aw run update-github-info --push --ref main
-   > - Help me open the generated workflow run.
+   > - Update .github/workflows/update-github-info.md workflow
+   > - Tell agent to:
+   >      web fetch https://awesome-copilot.github.com/workflows/
+   > - Add to sources awesome-copilot workflows https://awesome-copilot.github.com/workflows/
+   > - Don't compile this workflow yet. Just update the markdown workflow file.
    > ```
 
-3. If you prefer the GitHub UI, open the **Actions** tab, select the compiled updater workflow, and choose **Run workflow**.
+3. Compile the agentic workflow file `.github/workflows/update-github-info.md` in the terminal.
 
-   <img width="650" alt="GitHub Actions run workflow button" src="../images/run-workflow-button.svg" />
+   > ![Static Badge](https://img.shields.io/badge/Terminal-text?logo=gnometerminal&labelColor=0969da&color=ddf4ff)
+   >
+   > ```bash
+   > gh aw compile .github/workflows/update-github-info.md
+   > ```
 
-4. Wait for the workflow to create a pull request for Mona's website update.
+4. Ask Copilot to commit, push, and open a pull request.
 
-   <img width="650" alt="Pull request list showing a generated Mona website update pull request" src="../images/generated-update-pr.svg" />
+   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
+   >
+   > ```prompt
+   > - Commit the website content and Agentic Workflow changes.
+   > - Push to the `create-mona-updater` branch
+   > - Open a pull request into main.
+   > - Use the pull request title "Update Mona website updater workflow".
+   > ```
 
-5. Open the generated pull request and review the **Files changed** tab. Confirm it updates `site/content/github-info.md` and mentions the source of the update.
+5. In the GitHub UI merge the pull request, then open the **Actions** tab, select the `update-github-info` workflow, and choose **Run workflow**.
 
-   <img width="650" alt="Pull request files changed tab showing site/content/github-info.md" src="../images/pr-files-changed-github-info.svg" />
+   <img width="50%" alt="Run the update-github-info workflow" src="../images/run-update-github-info-1.png" />
 
-6. Leave the generated pull request open. When the updater workflow finishes, Mona will look for an open pull request that updates `site/content/github-info.md`. Wait about 20 seconds, then refresh the exercise issue for the final review.
+   <img width="50%" alt="Run the update-github-info workflow" src="../images/run-update-github-info-2.png" />
+
+   <img width="50%" alt="Run the update-github-info workflow" src="../images/run-update-github-info-3.png" />
+
+5. Wait for the workflow to create a pull request for Mona's website update.
+
+   <img width="50%" alt="Pull request list showing a generated Mona website update pull request" src="../images/generated-update-pr.svg" />
+
+6. Open the generated pull request and review the **Files changed** tab. Confirm it updates `site/content/github-info.md` and mentions the source of the update.
+
+   <img width="50%" alt="Pull request files changed tab showing site/content/github-info.md" src="../images/pr-files-changed-github-info.svg" />
+
+7. Leave the generated pull request open. When the updater workflow finishes, Mona will look for an open pull request that updates `site/content/github-info.md`. Wait about 20 seconds, then refresh the exercise issue for the final review.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>

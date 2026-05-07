@@ -7,7 +7,7 @@ on:
     types: [completed]
 
 permissions:
-  contents: read
+  contents: write
   actions: write
   issues: write
   pull-requests: read
@@ -57,13 +57,13 @@ jobs:
           file: exercise-toolkit/markdown-templates/step-feedback/checking-work.md
           edit-mode: replace
 
-      - name: Check Mona notes were updated
+      - name: Check update-github-info.md was updated
         id: check-notes-request
         continue-on-error: true
         uses: skills/action-keyphrase-checker@v2
         with:
-          text-file: notes/mona-notes.md
-          keyphrase: Mona updater request
+          text-file: .github/workflows/update-github-info.md
+          keyphrase: "awesome-copilot.github.com"
 
       - name: Check compiled workflow exists
         id: check-lock-file
@@ -115,7 +115,7 @@ jobs:
           vars: |
             step_number: 3
             results_table:
-              - description: "Checked that Mona's notes include a new updater request"
+              - description: "Checked that update-github-info.md includes a new updater request"
                 passed: ${{ steps.check-notes-request.outcome == 'success' }}
               - description: "Checked for .github/workflows/update-github-info.lock.yml"
                 passed: ${{ steps.check-lock-file.outcome == 'success' }}

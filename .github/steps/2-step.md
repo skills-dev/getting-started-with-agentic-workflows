@@ -36,21 +36,24 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
 > Select it from the Copilot Chat agent selector and give it access to edit files in the repository.
 > This will allow the agent to propose changes to the website content and create pull requests for review.
 
-   <img alt="agentic workflows Agent" src="../images/agentic-workflows-agent.png" width="50%" height="50%">
+   <img width="30%" alt="agentic workflows Agent" src="../images/agentic-workflows-agent.png" />
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
    > - Create .github/workflows/update-github-info.md
    >   as an agentic workflow markdown file.
+   > - Run the workflow on daily or on demand with workflow_dispatch.
    > - Give the workflow edit access through the tools configuration.
    > - Use safe-outputs with create-pull-request so the agent can
    >   propose changes without writing directly to main.
-   > - Tell the agent to read notes/mona-notes.md,
-   >   use the [GitHub Blog](https://github.blog/latest/),
-   >   use the [GitHub Changelog](https://github.blog/changelog/),
-   >   update site/content/github-info.md, and open
-   >   a pull request for Mona to review.
+   > - Tell the agent to:
+   >   - read notes/mona-notes.md,
+   >   - web fetch https://github.blog/latest/
+   >   - web fetch https://github.blog/changelog/
+   > - update site/content/github-info.md, and open
+   > - a pull request for Mona to review.
+   > Don't compile this workflow yet. Just create the markdown file.
    > ```
 
 ### :keyboard: Activity: Compile the `update-github-info.md` Agentic Workflow
@@ -78,32 +81,42 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
    ```markdown
    ---
    name: update-github-info
-   description: Draft website updates for Mona's GitHub Info site.
+   description: Draft website updates for Mona's GitHub Info site from official GitHub sources.
    on:
-     workflow_dispatch:
+   workflow_dispatch:
+   schedule:
+      - cron: '17 9 * * *'
    safe-outputs:
-     create-pull-request:
-       title-prefix: "[mona] "
-       draft: true
-       fallback-as-issue: false
+   create-pull-request:
+      title-prefix: "[mona] "
+      draft: true
+      fallback-as-issue: false
    tools:
-     edit:
+   edit:
+   web-fetch:
    network:
-     allowed:
-       - github.com
-       - github.blog
+   allowed:
+      - github.com
+      - github.blog
    ---
 
    # Update Mona's GitHub Info website
 
-   Review `site/content/github-info.md`.
+   Read `notes/mona-notes.md` before making changes.
 
    Use these sources:
    - `notes/mona-notes.md`
-   - GitHub Blog
-   - GitHub Changelog
+   - GitHub Blog: https://github.blog/latest/
+   - GitHub Changelog: https://github.blog/changelog/
 
-   Update the website with concise changes and open a pull request for Mona to review. Use a pull request title that mentions Mona or GitHub Info.
+   Update `site/content/github-info.md` with concise,
+   practical updates for readers and include source context when content comes
+   from the GitHub Blog or GitHub Changelog.
+
+   Open a pull request for Mona to review. 
+   Use a pull request title that mentions Mona or GitHub Info. 
+   Do not write directly to `main`;
+   rely on `safe-outputs` with `create-pull-request`.
    ```
 
 5. Ask Copilot to commit, push, and open a pull request.
