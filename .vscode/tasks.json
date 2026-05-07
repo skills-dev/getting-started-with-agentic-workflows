@@ -4,7 +4,7 @@
     {
       "label": "workspace: ready terminal",
       "type": "shell",
-      "command": "echo 'Codespace ready. CLI tools available: gh and copilot.' && exec bash -l",
+      "command": "while [ ! -f \"${TMPDIR:-/tmp}/mona-codespace-ready\" ]; do sleep 1; done; echo 'Codespace ready. CLI tools available: gh and copilot.' && exec bash -l",
       "isBackground": true,
       "problemMatcher": {
         "owner": "custom",

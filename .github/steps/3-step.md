@@ -1,57 +1,59 @@
-## Step 3: Schedule and document Mona's updater
+## Step 3: Run Mona's updater and review the generated pull request
 
-You now have a draft workflow. Before Mona can rely on it, the workflow should be ready for repeat use and easy for collaborators to understand.
+You now have an agentic workflow definition for Mona's website. In this step, you'll run it and inspect the pull request it creates.
 
-### 📖 Theory: Operationalizing an Agentic Workflow
+### 📖 Theory: From workflow definition to generated pull request
 
-A useful agentic workflow is more than a one-off prompt. It should be easy to run on demand, safe to run automatically, and documented so teammates understand how it works.
+Agentic workflows are authored as markdown files, but GitHub Actions runs compiled `.lock.yml` workflow files. The `gh aw compile` command turns `.github/workflows/update-github-info.md` into `.github/workflows/update-github-info.lock.yml`.
 
-In this step, you'll turn Mona's updater into a repeatable process by giving it both manual and scheduled triggers. You'll also document the review loop in the repository so future collaborators know where the website content comes from and why updates still go through pull requests.
+Because this workflow uses the default Copilot engine, it needs the `COPILOT_GITHUB_TOKEN` Actions secret you added in Step 1 before the compiled workflow can run.
 
-### :keyboard: Activity: Operationalize Mona's updater
+The workflow uses `safe-outputs: create-pull-request`, so the agent can draft website changes without writing directly to `main`. The agent prepares a patch, and a separate permission-controlled job opens a pull request for Mona to review.
 
-Continue working in the same VS Code window and pull request branch from Step 2.
+### :keyboard: Activity: Run the updater and inspect its pull request
 
-1. Ask Copilot to make Mona's updater repeatable and documented.
+1. Confirm the repository still has the `COPILOT_GITHUB_TOKEN` Actions secret from Step 1.
 
-   > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
-   >
-   > ```prompt
-   > - Update .github/workflows/update-github-info.md
-   >   so the workflow can run manually with workflow_dispatch
-   >   and automatically on a daily schedule.
-   > - Update README.md with a short section explaining
-   >   Mona's GitHub Info website is updated from notes/mona-notes.md,
-   >   the GitHub Blog, and the GitHub Changelog.
-   > - Explain in the README that the workflow opens pull requests
-   >   for Mona to review before changes are merged.
-   > ```
+   If you need to check, go to **Settings** > **Secrets and variables** > **Actions** in your copied exercise repository. You should see `COPILOT_GITHUB_TOKEN` listed as a repository secret.
 
-2. Review Copilot's suggested changes. Make sure:
-
-   - `.github/workflows/update-github-info.md` includes both `workflow_dispatch` and `schedule`
-   - `README.md` mentions `notes/mona-notes.md`
-   - `README.md` mentions the GitHub Blog and GitHub Changelog
-   - `README.md` explains the pull request review process
-
-3. Ask Copilot to commit and push the updates to the same pull request from Step 2.
+2. Ask Copilot to compile and run Mona's updater.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > - Commit the workflow scheduling and README documentation updates.
-   > - Push them to the current branch.
+   > - Check that gh-aw is available in this repository.
+   > - Make sure I am on the latest main branch before changing files.
+   > - Update notes/mona-notes.md with a short section named
+   >   "Mona updater request" that asks the updater to highlight
+   >   one recent GitHub Blog or GitHub Changelog update.
+   > - Compile .github/workflows/update-github-info.md with gh aw compile.
+   > - Confirm .github/workflows/update-github-info.lock.yml was created
+   >   and references COPILOT_GITHUB_TOKEN.
+   > - Run the update-github-info workflow with:
+   >   gh aw run update-github-info --push --ref main
+   > - Help me open the generated workflow run.
    > ```
 
-4. Merge the pull request into `main`.
+3. If you prefer the GitHub UI, open the **Actions** tab, select the compiled updater workflow, and choose **Run workflow**.
 
-5. Wait about 20 seconds, then refresh the exercise issue for the next step.
+   <img width="650" alt="GitHub Actions run workflow button" src="../images/run-workflow-button.svg" />
+
+4. Wait for the workflow to create a pull request for Mona's website update.
+
+   <img width="650" alt="Pull request list showing a generated Mona website update pull request" src="../images/generated-update-pr.svg" />
+
+5. Open the generated pull request and review the **Files changed** tab. Confirm it updates `site/content/github-info.md` and mentions the source of the update.
+
+   <img width="650" alt="Pull request files changed tab showing site/content/github-info.md" src="../images/pr-files-changed-github-info.svg" />
+
+6. Leave the generated pull request open. When the updater workflow finishes, Mona will look for an open pull request that updates `site/content/github-info.md`. Wait about 20 seconds, then refresh the exercise issue for the final review.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
 
-- The final check looks for both `workflow_dispatch` and `schedule` in `.github/workflows/update-github-info.md`.
-- Make sure your `README.md` mentions the GitHub Blog, GitHub Changelog, and pull requests.
-- If the next step does not appear, check the [Actions](../../actions) tab and confirm your pull request was merged.
+- If the workflow fails before the agent starts, confirm `COPILOT_GITHUB_TOKEN` is configured as an Actions secret.
+- If compilation fails, make sure `.github/workflows/update-github-info.md` includes `safe-outputs`, `create-pull-request`, `workflow_dispatch`, and a `network` allowlist.
+- If no pull request appears, open the failed workflow run from the **Actions** tab and review the logs.
+- If the pull request opens as a draft, that is expected. Mona should review generated website changes before they merge.
 
 </details>
