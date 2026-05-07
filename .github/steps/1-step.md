@@ -70,14 +70,14 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
    > ```prompt
-   > - Don't run in a sandbox.
-   > - Create a new branch named initialize-agentic-workflows.
-   > - Run gh aw init --create-pull-request --completions
-   >   to initialize this repository for GitHub agentic workflows.
-   > - If the command leaves changes locally instead of opening a pull request,
-   >   commit the setup changes with the message
-   >   "Initialize GitHub agentic workflows", push the branch,
-   >   and open a pull request into main.
+   > @terminal run these commands in the local codespace shell:
+   > 1. git checkout -b initialize-agentic-workflows
+   > 2. gh aw init --create-pull-request --completions
+   > 3. If the command leaves changes locally instead of opening a pull request:
+   >    - git add .
+   >    - git commit -m "Initialize GitHub agentic workflows"
+   >    - git push origin initialize-agentic-workflows
+   >    - gh pr create --base main
    > ```
 
 9. Review the pull request that was opened. It should include repository setup files such as:
