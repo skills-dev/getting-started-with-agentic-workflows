@@ -22,7 +22,7 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
 2. Confirm the **Repository** field is your copy of the exercise, not the original template, then click the green **Create Codespace** button.
    - ✅ Your copy: `/{{full_repo_name}}`
-   - ❌ Original: `/skills-dev/getting-started-with-agentic-workflows`
+   - ❌ Original: `/skills-dev/agentic-workflows-that-read-the-room`
 
 3. Wait for Visual Studio Code to load in your browser. The codespace setup may take a few minutes while it installs dependencies and verifies the Astro site build.
 

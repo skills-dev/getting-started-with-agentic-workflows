@@ -1,6 +1,6 @@
 ## Review
 
-_Congratulations, you've completed this exercise and built your first hands-on GitHub agentic workflows practice scenario!_ 🎉
+_Congratulations, you've completed **Agentic Workflows That Read the Room** and built your first hands-on GitHub agentic workflows practice scenario!_ 🎉
 
 <img src="https://octodex.github.com/images/jetpacktocat.png" alt="celebrate" width=200 align=right>
 

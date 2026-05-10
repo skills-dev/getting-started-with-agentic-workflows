@@ -21,7 +21,7 @@ jobs:
     name: Start Exercise
     uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.9.3
     with:
-      exercise-title: "Getting Started with Agentic Workflows"
+      exercise-title: "Agentic Workflows That Read the Room"
       intro-message: "Practice installing and creating agentic workflows for Mona's GitHub Info website"
 
   post_next_step_content:

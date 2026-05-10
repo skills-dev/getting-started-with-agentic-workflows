@@ -1,4 +1,4 @@
-# Getting Started with Agentic Workflows
+# Agentic Workflows That Read the Room
 
 _Learn how to install GitHub Agentic Workflows and create an AI-powered workflow that keeps Mona's website current._
 
@@ -29,7 +29,7 @@ Simply copy the exercise to your account, then give your favorite Octocat (Mona)
 > If you copied the exercise as a private repository, token setup may
 > require additional account or organization policy configuration.
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills-dev&template_name=getting-started-with-agentic-workflows&owner=%40me&name=skills-getting-started-with-agentic-workflows&description=Exercise:+Getting+Started+with+Agentic+Workflows&visibility=public)
+[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills-dev&template_name=agentic-workflows-that-read-the-room&owner=%40me&name=skills-agentic-workflows-that-read-the-room&description=Exercise:+Agentic+Workflows+That+Read+the+Room&visibility=public)
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
