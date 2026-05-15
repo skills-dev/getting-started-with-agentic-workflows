@@ -29,14 +29,21 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
 
    > 💡 **Tip:** If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
 
-3. Now let's use the agentic-workflows agent to create a workflow that opens pull requests with future website updates. Ask Copilot to create a new workflow file in `.github/workflows/` and give the agent edit access so it can propose changes to the website content.
+3. Now let's use the agentic-workflows agent to create a workflow that opens pull requests with future website updates. Open the **Copilot Chat panel** using `Ctrl + Alt + I` (Windows) or `Cmd + Alt + I` (Mac). Select the **agentic-workflows** agent from the agent selector and give it access to edit files in the repository.
 
 > [!NOTE]
 > The agentic-workflows agent is a general-purpose agent that can follow instructions in markdown files.
-> Select it from the Copilot Chat agent selector and give it access to edit files in the repository.
 > This will allow the agent to propose changes to the website content and create pull requests for review.
 
    <img width="30%" alt="agentic workflows Agent" src="../images/agentic-workflows-agent.png" />
+
+4. Before prompting the agent, add a rule to `.github/agents/agentic-workflows.agent.md` so the agent knows not to compile workflows on its own. Open the file and add the following line under Important Notes:
+
+   ```markdown
+   When creating or editing agentic workflow files, do not compile them. Only create or update the markdown workflow file.
+   ```
+
+5. Ask the agentic-workflows agent to create the workflow file.
 
    > ![Static Badge](https://img.shields.io/badge/-Prompt-text?style=social&logo=github%20copilot)
    >
@@ -53,7 +60,6 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
    >   - web fetch https://github.blog/changelog/
    > - update site/content/github-info.md, and open
    > - a pull request for Mona to review.
-   > Don't compile this workflow yet. Just create the markdown file.
    > ```
 
 ### :keyboard: Activity: Compile the `update-github-info.md` Agentic Workflow

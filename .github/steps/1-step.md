@@ -67,7 +67,8 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
 
    1. In your copied exercise repository, go to **Settings** > **Actions** > **General**.
    2. Under **Workflow permissions**, select **Read and write permissions**.
-   3. Save the changes.
+   3. Check **Allow GitHub Actions to create and approve pull requests**.
+   4. Save the changes.
 
    <details>
      <summary>Actions workflow permissions details</summary><br/>
@@ -90,9 +91,9 @@ Let's start in the pre-configured Codespace for this exercise. The dev container
    - `.github/mcp.json`
    - `.gitattributes`
 
-3.  Merge the setup pull request into `main`.
+10. Merge the setup pull request into `main`.
 
-4.  Wait about 20 seconds, then refresh the exercise issue for the next step.
+11. Wait about 20 seconds, then refresh the exercise issue for the next step.
 
 <details>
 <summary>Having trouble? 🤷</summary><br/>
