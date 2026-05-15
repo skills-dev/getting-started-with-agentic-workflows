@@ -4,6 +4,20 @@ _Congratulations, you've completed **Agentic Workflows That Read the Room** and 
 
 <img src="https://octodex.github.com/images/jetpacktocat.png" alt="celebrate" width=200 align=right>
 
+Pull the latest changes from `main` to get the final updates to the exercise repository, then review your work to see the changes on your website!🎉
+
+<details><summary> Need help to view your changes ? </summary>
+<p>
+
+View Mona's website locally. In the left sidebar(if it's not running yet), select **Run and Debug**, choose **Mona Astro: Dev Server**, and start the launch configuration.
+
+   <img width=30% alt="VS Code Run and Debug" src="../images/mona-astro-site-run-debug.png" />
+
+   When the site starts, open the forwarded port `4321` in your browser and confirm the GitHub Info website loads.
+
+</p>
+</details> 
+
 Here's what you accomplished:
 
 - **Installed agentic workflow setup** — You added the repository workflow that prepares GitHub agentic workflows tooling.

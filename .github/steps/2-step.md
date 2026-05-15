@@ -29,7 +29,7 @@ Continue working in VS Code. If you closed your browser editor, reopen your deve
 
    > 💡 **Tip:** If Copilot doesn't give you quite what you want, you can always continue explaining what you need. Copilot will remember the conversation history for follow-up responses.
 
-3. Now let's use the agentic-workflows agent to create a workflow that opens pull requests with future website updates. Open the **Copilot Chat panel** using `Ctrl + Alt + I` (Windows) or `Cmd + Alt + I` (Mac). Select the **agentic-workflows** agent from the agent selector and give it access to edit files in the repository.
+3. Now let's use the agentic-workflows agent to create a workflow that opens pull requests with future website updates. Open the **Copilot Chat panel** using `Ctrl + Alt + I` (Windows) or `Ctrl + Cmd + I` (Mac). Select the **agentic-workflows** agent from the agent selector and give it access to edit files in the repository.
 
 > [!NOTE]
 > The agentic-workflows agent is a general-purpose agent that can follow instructions in markdown files.
